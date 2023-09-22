@@ -1,0 +1,416 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://shader/ao-spec-difuse.shader" type="Shader" id=1]
+[ext_resource path="res://ships/Hull.gd" type="Script" id=2]
+[ext_resource path="res://sfx/spark_noise.png" type="Texture" id=3]
+[ext_resource path="res://weapons/WeaponSlot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ships/ATK225.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ships/k225-cd.png" type="Texture" id=6]
+[ext_resource path="res://ships/k225-mask.png" type="Texture" id=7]
+[ext_resource path="res://ships/k225-m.png" type="Texture" id=8]
+[ext_resource path="res://ships/k225-n.png" type="Texture" id=9]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/maskScale = Vector2( 12, 1 )
+shader_param/frames = Vector2( 1, 1 )
+shader_param/paintJobFactor = 0.0
+shader_param/paintJobBrightAdjust = 16.0
+shader_param/maxval = 5.0
+shader_param/sparkBias = 0.0
+shader_param/scale = Vector2( 6, 1 )
+shader_param/sparkColor = Vector3( 50, 10, 100 )
+shader_param/coatColor = Vector3( 0.02, 0.02, 0.02 )
+shader_param/sparkSpeed = Plane( 0.011, 0.013, 0.017, 0.019 )
+shader_param/ref = 0.1
+shader_param/roughness = 0.5
+shader_param/reflectiveness = 0.25
+shader_param/shine = 1.0
+shader_param/mask = ExtResource( 7 )
+shader_param/charges = ExtResource( 3 )
+shader_param/map = ExtResource( 8 )
+
+[node name="ATK222222225" instance=ExtResource( 5 )]
+mass = 225.0
+shipName = "SHIP_AT222222225"
+hullPrice = 4174749
+cargoHoldArea = Rect2( -40, -550, 80, 1050 )
+cargoHoldOffset = Vector2( 0, 0 )
+
+[node name="Hull" parent="." index="0"]
+position = Vector2( 0, 460 )
+region_enabled = true
+region_rect = Rect2( 0, 440, 7560, 440 )
+
+[node name="HullMidBack" type="Sprite" parent="." index="1"]
+light_mask = 5
+material = SubResource( 1 )
+position = Vector2( 0, 190 )
+z_index = 26
+texture = ExtResource( 6 )
+normal_map = ExtResource( 9 )
+hframes = 12
+region_enabled = true
+region_rect = Rect2( 0, 265, 7560, 250 )
+script = ExtResource( 2 )
+hullCustomPaintFile = "user://custom-atk-225.png"
+
+[node name="HullMid" type="Sprite" parent="." index="2"]
+light_mask = 5
+material = SubResource( 1 )
+position = Vector2( 0, -25 )
+z_index = 26
+texture = ExtResource( 6 )
+normal_map = ExtResource( 9 )
+hframes = 12
+region_enabled = true
+region_rect = Rect2( 0, 265, 7560, 250 )
+script = ExtResource( 2 )
+hullCustomPaintFile = "user://custom-atk-225.png"
+
+[node name="HullMidFront" type="Sprite" parent="." index="3"]
+light_mask = 5
+material = SubResource( 1 )
+position = Vector2( 0, -240 )
+z_index = 26
+texture = ExtResource( 6 )
+normal_map = ExtResource( 9 )
+hframes = 12
+region_enabled = true
+region_rect = Rect2( 0, 265, 7560, 250 )
+script = ExtResource( 2 )
+hullCustomPaintFile = "user://custom-atk-225.png"
+
+[node name="HullFront" type="Sprite" parent="." index="4"]
+light_mask = 5
+material = SubResource( 1 )
+position = Vector2( 0, -480 )
+z_index = 26
+texture = ExtResource( 6 )
+normal_map = ExtResource( 9 )
+hframes = 12
+region_enabled = true
+region_rect = Rect2( 0, 0, 7560, 300 )
+script = ExtResource( 2 )
+hullCustomPaintFile = "user://custom-atk-225.png"
+
+[node name="Front Bumper" parent="." index="6"]
+position = Vector2( 0, -556 )
+
+[node name="CabinLight" parent="." index="7"]
+position = Vector2( -1, -506 )
+
+[node name="Light" parent="CabinLight" index="0"]
+visible = true
+
+[node name="Collider" parent="." index="9"]
+visible = false
+position = Vector2( 0, 261 )
+polygon = PoolVector2Array( -116.154, -114.615, -112.308, -121.538, -60, -121.538, -60, -150.769, -38.4615, -190.769, -38.4615, -279.231, -116.923, -280, -113.077, -286.923, -59.2308, -286.923, -59.2308, -315.385, -38.4615, -355.385, -38.4615, -444.615, -116.154, -445.385, -112.308, -452.308, -60, -452.308, -60, -481.539, -38.4615, -520.769, -38.4615, -610, -116.923, -610.769, -112.308, -617.692, -38.4615, -617.692, -38.461, -629.232, -34.615, -633.078, -19.231, -633.078, -19.231, -640.77, -15.385, -640.77, -14.615, -516.155, -23.846, -502.308, -21.5385, 150, -13.8462, 173.077, 16.1538, 173.077, 23.0769, 150, 23.846, -502.308, 13.077, -515.385, 14.615, -640.77, 19.231, -640.77, 19.231, -633.078, 34.615, -633.078, 38.461, -629.232, 38.461, -617.595, 111.538, -617.692, 116.923, -610.769, 38.4615, -610, 38.4615, -521.539, 59.2308, -480.769, 59.2308, -453.077, 112.308, -452.308, 116.923, -445.385, 38.4615, -445.385, 38.4615, -355.385, 59.2308, -316.154, 59.2308, -286.923, 113.846, -286.923, 117.692, -279.231, 38.4615, -279.231, 38.4615, -190.769, 58.4615, -150.769, 58.4615, -120.769, 113.077, -120.769, 116.923, -113.077, 38.4615, -113.077, 38.4615, -24.6154, 58.4615, 15.3846, 58.4615, 43.8462, 113.077, 44.6154, 116.923, 51.5385, 38.4615, 51.5385, 38.4615, 143.077, 58.4615, 183.077, 58.4615, 216.923, 80, 216.923, 121.538, 270.769, 118.462, 293.077, 106.154, 303.846, -102.308, 303.077, -116.923, 293.077, -121.538, 270, -73.8462, 216.154, -60.7692, 216.154, -60.7692, 179.231, -38.4615, 143.077, -38.4615, 51.5385, -116.923, 51.5385, -113.077, 43.8462, -59.2308, 43.8462, -59.2308, 15.3846, -38.4615, -26.1538, -38.4615, -113.846 )
+
+[node name="CargoHoldArea" parent="." index="10"]
+position = Vector2( 0, 294 )
+
+[node name="CollisionPolygon2D" parent="CargoHoldArea" index="0"]
+polygon = PoolVector2Array( -6.92308, -568.462, 5.385, -568.462, 8.462, -543.847, 16.154, -541.539, 13.846, -420.001, 24.615, -405.385, 24.6154, 246.154, 16.9231, 270.769, -16.1538, 270.769, -24.6154, 245.385, -26.923, -404.616, -17.692, -420.001, -17.692, -541.539, -10.769, -543.847 )
+
+[node name="CargoHoldAreaHull" parent="." index="11"]
+visible = false
+position = Vector2( 0, 294 )
+
+[node name="CollisionPolygon2D" parent="CargoHoldAreaHull" index="0"]
+polygon = PoolVector2Array( 36.154, -653.078, 36.1539, -640.769, 110, -640.769, 113.077, -637.692, 36.1539, -637.692, 36.1539, -546.154, 57.6923, -507.692, 57.6923, -475.385, 112.308, -475.385, 113.846, -472.308, 36.1539, -472.308, 36.1539, -380.769, 58.4615, -342.308, 58.4615, -310, 112.308, -310, 113.846, -306.923, 36.1539, -306.923, 36.1539, -215.385, 56.1539, -176.154, 56.1539, -143.846, 111.538, -143.846, 113.077, -140.769, 36.1539, -140.769, 36.1539, -49.2308, 56.1539, -9.23077, 56.1539, 20.7692, 111.538, 21.5385, 113.077, 23.8462, 36.1539, 23.8462, 36.1539, 118.462, 56.1539, 158.462, 56.1539, 193.846, 78.4615, 193.846, 119.231, 246.154, 116.154, 266.154, 104.615, 276.154, -101.538, 275.385, -114.615, 266.154, -118.462, 245.385, -73.0769, 193.077, -58.4615, 193.077, -58.4615, 154.615, -35.3846, 118.462, -35.3846, 23.8462, -113.077, 23.8462, -110.769, 20.7692, -56.9231, 20.7692, -56.9231, -10, -36.1539, -51.5385, -36.1539, -141.538, -112.308, -142.308, -110.769, -144.615, -57.6923, -144.615, -57.6923, -175.385, -36.1539, -214.615, -36.1539, -306.923, -113.077, -306.923, -111.538, -310, -58.4615, -310, -58.4615, -342.308, -36.1539, -380.769, -36.1539, -472.308, -113.077, -472.308, -110, -475.385, -57.6923, -475.385, -57.6923, -507.692, -36.1539, -546.154, -36.1539, -637.692, -113.846, -637.692, -110.769, -640.769, -36.1539, -640.769, -36.154, -653.847, -33.846, -656.155, 33.077, -656.155 )
+
+[node name="thruster-lt" parent="." index="12"]
+position = Vector2( -140, -549 )
+
+[node name="thruster-rt" parent="." index="13"]
+position = Vector2( 140, -549 )
+
+[node name="thruster-tl" parent="." index="14"]
+position = Vector2( -104, -345 )
+
+[node name="thruster-tr" parent="." index="15"]
+position = Vector2( 104, -345 )
+
+[node name="thruster-mtl" parent="." index="16" instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( -104, -130 )
+rotation = 1.5708
+z_index = 15
+command = ">r"
+
+[node name="thruster-mtr" parent="." index="17" instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( 104, -130 )
+rotation = -1.5708
+z_index = 15
+command = "<l"
+
+[node name="thruster-ml" parent="." index="18"]
+position = Vector2( -104, 85 )
+
+[node name="thruster-mr" parent="." index="19"]
+position = Vector2( 104, 85 )
+
+[node name="thruster-mbl" parent="." index="20" instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( -104, 300 )
+rotation = 1.5708
+z_index = 15
+command = ">l"
+
+[node name="thruster-mbr" parent="." index="21" instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( 104, 300 )
+rotation = -1.5708
+z_index = 15
+command = "<r"
+
+[node name="thruster-bl" parent="." index="22"]
+position = Vector2( -104, 515 )
+
+[node name="thruster-br" parent="." index="23"]
+position = Vector2( 104, 515 )
+
+[node name="thruster-lb" parent="." index="24"]
+position = Vector2( -130, 664 )
+
+[node name="thruster-rb" parent="." index="25"]
+position = Vector2( 130, 664 )
+
+[node name="engine-main-1" parent="." index="26"]
+position = Vector2( 0, 696 )
+
+[node name="engine-main-2" parent="." index="27"]
+position = Vector2( 65, 686 )
+
+[node name="engine-main-3" parent="." index="28"]
+position = Vector2( -65, 686 )
+
+[node name="Light2D" parent="." index="34"]
+position = Vector2( -284, -188 )
+
+[node name="Light2D2" parent="." index="35"]
+position = Vector2( 348, 247.67 )
+
+[node name="CargoBaffles" parent="." index="37"]
+visible = true
+position = Vector2( 0, -300 )
+
+[node name="MineralProcessingUnit" parent="." index="39"]
+position = Vector2( 0, 445 )
+
+[node name="MineralProcessingUnit_FSO" parent="." index="40"]
+position = Vector2( 0, 445 )
+
+[node name="MineralProcessingUnit_SMELT" parent="." index="41"]
+position = Vector2( 0, 442 )
+
+[node name="MineralProcessingUnit_FAB" parent="." index="42"]
+position = Vector2( -1, 442 )
+
+[node name="AuxSlot" parent="." index="43"]
+position = Vector2( 0, 294 )
+
+[node name="weapon-left" parent="." index="44"]
+visible = true
+position = Vector2( -92, -571 )
+
+[node name="weapon-right" parent="." index="45"]
+visible = true
+position = Vector2( 92, -571 )
+
+[node name="weapon-left-back" parent="." index="46"]
+visible = true
+position = Vector2( -122, -613 )
+
+[node name="SYSTEM_EMD14" parent="weapon-left-back" index="3"]
+visible = false
+
+[node name="weapon-right-back" parent="." index="47"]
+visible = true
+position = Vector2( 122, -613 )
+
+[node name="SYSTEM_EMD14" parent="weapon-right-back" index="3"]
+visible = false
+
+[node name="SYSTEM_EXSTORAGE-R" parent="weapon-right-back" index="16"]
+visible = true
+
+[node name="weapon-left-back2" parent="." index="48"]
+visible = true
+position = Vector2( -122, -401 )
+
+[node name="SYSTEM_EMD14" parent="weapon-left-back2" index="3"]
+visible = false
+
+[node name="weapon-right-back2" parent="." index="49"]
+visible = true
+position = Vector2( 122, -401 )
+
+[node name="SYSTEM_EMD14" parent="weapon-right-back2" index="3"]
+visible = false
+
+[node name="SYSTEM_EXSTORAGE-R" parent="weapon-right-back2" index="16"]
+visible = true
+
+[node name="weapon-left-back3" parent="." index="50"]
+visible = true
+position = Vector2( -122, -188 )
+
+[node name="SYSTEM_EMD14" parent="weapon-left-back3" index="3"]
+visible = false
+
+[node name="SYSTEM_EXSTORAGE-L" parent="weapon-left-back3" index="15"]
+visible = true
+
+[node name="weapon-right-back3" parent="." index="51"]
+visible = true
+position = Vector2( 122, -188 )
+
+[node name="SYSTEM_EMD14" parent="weapon-right-back3" index="3"]
+visible = false
+
+[node name="SYSTEM_EXSTORAGE-R" parent="weapon-right-back3" index="16"]
+visible = true
+
+[node name="weapon-left-back4" parent="." index="52" instance=ExtResource( 4 )]
+position = Vector2( -122, 29 )
+rotation = -0.523599
+slot = "leftBay4"
+
+[node name="SYSTEM_PDMWG-L" parent="weapon-left-back4" index="13"]
+position = Vector2( -200, 81 )
+z_index = 27
+
+[node name="SYSTEM_EXSTORAGE-L" parent="weapon-left-back4" index="15"]
+visible = true
+
+[node name="SYSTEM_ACTEMD14" parent="weapon-left-back4" index="19"]
+pivotPath = NodePath("Pivot")
+weaponPath = NodePath("Pivot/massdriver")
+audioPath = NodePath("Actuation")
+lightPath = NodePath("Pivot/Light")
+
+[node name="SYSTEM_ACL200P" parent="weapon-left-back4" index="20"]
+weaponPath = NodePath("Pivot/laster-pulse")
+
+[node name="SYSTEM_HUNK-L" parent="weapon-left-back4" index="24"]
+rotation = -0.174533
+
+[node name="SYSTEM_PDT-L" parent="weapon-left-back4" index="29"]
+position = Vector2( -190, 0 )
+rotation = -1.0472
+z_index = 27
+
+[node name="weapon-right-back4" parent="." index="53" instance=ExtResource( 4 )]
+position = Vector2( 122, 29 )
+rotation = 0.523599
+slot = "rightBay4"
+
+[node name="SYSTEM_EMD14" parent="weapon-right-back4" index="3"]
+visible = false
+
+[node name="SYSTEM_PDMWG-R" parent="weapon-right-back4" index="14"]
+position = Vector2( 200, 81 )
+z_index = 27
+
+[node name="SYSTEM_EXSTORAGE-R" parent="weapon-right-back4" index="16"]
+visible = true
+
+[node name="SYSTEM_ACTEMD14" parent="weapon-right-back4" index="19"]
+pivotPath = NodePath("Pivot")
+weaponPath = NodePath("Pivot/massdriver")
+audioPath = NodePath("Actuation")
+lightPath = NodePath("Pivot/Light")
+
+[node name="SYSTEM_ACL200P" parent="weapon-right-back4" index="20"]
+weaponPath = NodePath("Pivot/laster-pulse")
+
+[node name="SYSTEM_HUNK-R" parent="weapon-right-back4" index="23"]
+rotation = 0.174533
+
+[node name="SYSTEM_PDT-R" parent="weapon-right-back4" index="30"]
+position = Vector2( 190, 0 )
+rotation = 1.0472
+z_index = 27
+
+[node name="weapon-left-back5" parent="." index="54" instance=ExtResource( 4 )]
+position = Vector2( -122, 242 )
+rotation = -0.523599
+slot = "leftBay5"
+
+[node name="SYSTEM_PDMWG-L" parent="weapon-left-back5" index="13"]
+position = Vector2( -200, 81 )
+z_index = 27
+
+[node name="SYSTEM_EXSTORAGE-L" parent="weapon-left-back5" index="15"]
+visible = true
+
+[node name="SYSTEM_ACTEMD14" parent="weapon-left-back5" index="19"]
+pivotPath = NodePath("Pivot")
+weaponPath = NodePath("Pivot/massdriver")
+audioPath = NodePath("Actuation")
+lightPath = NodePath("Pivot/Light")
+
+[node name="SYSTEM_ACL200P" parent="weapon-left-back5" index="20"]
+weaponPath = NodePath("Pivot/laster-pulse")
+
+[node name="SYSTEM_HUNK-L" parent="weapon-left-back5" index="24"]
+rotation = -0.174533
+
+[node name="SYSTEM_PDT-L" parent="weapon-left-back5" index="29"]
+position = Vector2( -190, 0 )
+rotation = -1.0472
+z_index = 27
+
+[node name="weapon-right-back5" parent="." index="55" instance=ExtResource( 4 )]
+position = Vector2( 122, 242 )
+rotation = 0.523599
+slot = "rightBay5"
+
+[node name="SYSTEM_EMD14" parent="weapon-right-back5" index="3"]
+visible = false
+
+[node name="SYSTEM_PDMWG-R" parent="weapon-right-back5" index="14"]
+position = Vector2( 200, 81 )
+z_index = 27
+
+[node name="SYSTEM_EXSTORAGE-R" parent="weapon-right-back5" index="16"]
+visible = true
+
+[node name="SYSTEM_ACTEMD14" parent="weapon-right-back5" index="19"]
+pivotPath = NodePath("Pivot")
+weaponPath = NodePath("Pivot/massdriver")
+audioPath = NodePath("Actuation")
+lightPath = NodePath("Pivot/Light")
+
+[node name="SYSTEM_ACL200P" parent="weapon-right-back5" index="20"]
+weaponPath = NodePath("Pivot/laster-pulse")
+
+[node name="SYSTEM_HUNK-R" parent="weapon-right-back5" index="23"]
+rotation = 0.174533
+
+[node name="SYSTEM_PDT-R" parent="weapon-right-back5" index="30"]
+position = Vector2( 190, 0 )
+rotation = 1.0472
+z_index = 27
+
+[node name="AI" parent="." index="57"]
+position = Vector2( 0, 294 )
+
+[node name="reactor" parent="." index="59"]
+position = Vector2( 0, 543 )
+offset = Vector2( 0, -147 )
+region_rect = Rect2( 0, 220, 7560, 750 )
+
+[editable path="weapon-left"]
+[editable path="weapon-right"]
+[editable path="weapon-left-back"]
+[editable path="weapon-right-back"]
+[editable path="weapon-left-back2"]
+[editable path="weapon-right-back2"]
+[editable path="weapon-left-back3"]
+[editable path="weapon-right-back3"]
+[editable path="weapon-left-back4"]
+[editable path="weapon-right-back4"]
+[editable path="weapon-left-back5"]
+[editable path="weapon-right-back5"]
+[editable path="AI"]

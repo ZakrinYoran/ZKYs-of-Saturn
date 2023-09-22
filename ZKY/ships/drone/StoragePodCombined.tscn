@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ships/drone/StoragePod.tscn" type="PackedScene" id=1]
+
+[node name="StoragePodCombined" instance=ExtResource( 1 )]
+mass = 10.0
+processedCargoCapacity = 60000
+processedCargoStorageType = "amorphic"
+
+[node name="DisableAI" parent="." index="14"]
+collision_mask = 2147487232
+
+[editable path="AI"]

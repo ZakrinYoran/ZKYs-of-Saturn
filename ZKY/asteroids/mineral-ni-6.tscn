@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://asteroids/mineral.gd" type="Script" id=1]
+[ext_resource path="res://asteroids/mineral.material" type="Material" id=2]
+[ext_resource path="res://asteroids/minerals-c.png" type="Texture" id=3]
+[ext_resource path="res://asteroids/minerals-n.png" type="Texture" id=4]
+[ext_resource path="res://lights/distant-proxy.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 10.4048
+
+[node name="Ni6" type="RigidBody2D"]
+mass = 31.0
+script = ExtResource( 1 )
+purity = 0.7
+mineral = "Ni"
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 0.913725, 0.647059, 1 )
+material = ExtResource( 2 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+normal_map = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 772, 1123, 74, 96 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -95.3953, -318.615 )
+editor_only = true
+texture = ExtResource( 5 )
+energy = 5.0
+range_height = 100.0
+
+[node name="Light2D2" type="Light2D" parent="."]
+position = Vector2( 604.685, 536.586 )
+editor_only = true
+texture = ExtResource( 5 )
+color = Color( 0, 0.179688, 1, 1 )
+energy = 5.0
+range_height = -100.0
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -0.397217, 0.397213 )
+z_index = 20
+shape = SubResource( 1 )

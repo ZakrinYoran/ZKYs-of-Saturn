@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://weapons/WeaponSlot.tscn" type="PackedScene" id=1]
+
+[node name="WeaponSlot" instance=ExtResource( 1 )]
+
+[node name="SYSTEM_EMD14" parent="." index="3"]
+visible = false
+
+[node name="SYSTEM_EXCOM-L" parent="." index="29" instance_placeholder="res://ZKY/ships/modules/StorageContainerDockCombined-L.tscn"]
+position = Vector2( 0, 196 )
+
+[node name="SYSTEM_EXCOM-R" parent="." index="30" instance_placeholder="res://ZKY/ships/modules/StorageContainerDockCombined.tscn"]
+position = Vector2( 0, 196 )

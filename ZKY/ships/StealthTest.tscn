@@ -1,0 +1,517 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://ships/metal_creak_01.wav" type="AudioStream" id=1]
+[ext_resource path="res://ships/ship-ctrl.gd" type="Script" id=2]
+[ext_resource path="res://ships/metal_impact_01.wav" type="AudioStream" id=3]
+[ext_resource path="res://ships/AI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://hud/alert.wav" type="AudioStream" id=5]
+[ext_resource path="res://lights/distant-proxy.png" type="Texture" id=6]
+[ext_resource path="res://sfx/dv-plume.wav" type="AudioStream" id=7]
+[ext_resource path="res://shader/ao-spec-difuse.shader" type="Shader" id=8]
+[ext_resource path="res://sfx/PitchAdjustedAudio.gd" type="Script" id=9]
+[ext_resource path="res://hud/Hud.tscn" type="PackedScene" id=10]
+[ext_resource path="res://debug/AIdebug.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ships/modules/claws.phymat" type="PhysicsMaterial" id=12]
+[ext_resource path="res://ships/MaterialReadout.gd" type="Script" id=13]
+[ext_resource path="res://ships/modules/MineralProcessingUnit_FAB.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sfx/spark_noise.png" type="Texture" id=15]
+[ext_resource path="res://ships/CabinLight.gd" type="Script" id=16]
+[ext_resource path="res://ships/modules/ShipCamera.tscn" type="PackedScene" id=17]
+[ext_resource path="res://ships/modules/CargoBaffles.tscn" type="PackedScene" id=18]
+[ext_resource path="res://ships/modules/ReactionWheel.tscn" type="PackedScene" id=19]
+[ext_resource path="res://ships/modules/AuxSlot.tscn" type="PackedScene" id=20]
+[ext_resource path="res://ships/Hull.gd" type="Script" id=21]
+[ext_resource path="res://ships/k37-mk3-m.png" type="Texture" id=22]
+[ext_resource path="res://ships/k37-mk3-cd.png" type="Texture" id=23]
+[ext_resource path="res://ships/k37-mk3-n.png" type="Texture" id=24]
+[ext_resource path="res://ships/k37-mk3-cl.png" type="Texture" id=25]
+[ext_resource path="res://hud/collect.wav" type="AudioStream" id=26]
+[ext_resource path="res://ships/k37-mk3-cl-cabin.png" type="Texture" id=27]
+[ext_resource path="res://ships/electric_arc.wav" type="AudioStream" id=28]
+[ext_resource path="res://lights/spotlight.png" type="Texture" id=29]
+[ext_resource path="res://ships/Front Bumper.gd" type="Script" id=30]
+[ext_resource path="res://ships/excavator_open.wav" type="AudioStream" id=31]
+[ext_resource path="res://ships/RA-TRTL.material" type="Material" id=32]
+[ext_resource path="res://ships/excavator_close.wav" type="AudioStream" id=33]
+[ext_resource path="res://ships/excavator_struggle.wav" type="AudioStream" id=34]
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 8 )
+shader_param/maskScale = Vector2( 11, 1 )
+shader_param/frames = Vector2( 1, 1 )
+shader_param/paintJobFactor = 0.0
+shader_param/paintJobBrightAdjust = 16.0
+shader_param/maxval = 5.0
+shader_param/sparkBias = 0.0
+shader_param/scale = Vector2( 1, 0.5 )
+shader_param/sparkColor = Vector3( 50, 10, 100 )
+shader_param/coatColor = Vector3( 0.02, 0.02, 0.02 )
+shader_param/sparkSpeed = Plane( 0.011, 0.013, 0.017, 0.019 )
+shader_param/ref = 0.1
+shader_param/roughness = 0.5
+shader_param/reflectiveness = 0.25
+shader_param/shine = 1.0
+shader_param/charges = ExtResource( 15 )
+shader_param/map = ExtResource( 22 )
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 8 )
+shader_param/maskScale = Vector2( 11, 1 )
+shader_param/frames = Vector2( 1, 1 )
+shader_param/paintJobFactor = 0.0
+shader_param/paintJobBrightAdjust = 16.0
+shader_param/maxval = 5.0
+shader_param/sparkBias = 0.0
+shader_param/scale = Vector2( 0.5, 1 )
+shader_param/sparkColor = Vector3( 50, 10, 100 )
+shader_param/coatColor = Plane( 0.02, 0.02, 0.02, 1 )
+shader_param/sparkSpeed = Plane( 0.011, 0.013, 0.017, 0.019 )
+shader_param/ref = 0.4
+shader_param/roughness = 4.0
+shader_param/reflectiveness = 8.0
+shader_param/shine = 1.0
+
+[sub_resource type="Animation" id=8]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 106.0
+height = 220.0
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 250.0
+height = 600.0
+
+[node name="StealthShip" type="RigidBody2D"]
+collision_layer = 2050
+collision_mask = 71
+mass = 23.89
+linear_velocity = Vector2( -100, 0 )
+script = ExtResource( 2 )
+essentialTalker = false
+hailable = false
+hasMusicChange = false
+shipName = "SHIP_TRTL_STEALTH"
+baseShipName = "SHIP_TRTL"
+shipType = "fission"
+processedCargoCapacity = 7000
+astrogating = false
+astrogationVelocityMatch = false
+lidarResponse = 0.1
+capacitor = 1500
+defaultAutopilot = "SYSTEM_AUTOPILOT_MK3"
+faction = "secret"
+factionIndependent = true
+discoveryPath = NodePath("")
+empShield = 200
+mystery = true
+aiHunterMaxVelocity = 1500
+aiCuriosityDisance = -2000
+aiPilotingSkillAdjust = 0.0
+aiFlipAboveVelocity = 500
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0.01, 0.01, 0.01, 1 )
+polygon = PoolVector2Array( 3, -120, 9, -134, 27, -324, 72, -96, 218, 247, 39, 94.4613, 39, 139, -4, 326, -43, 138, -42.6353, 96.2421, -224, 245, -69, -93, -28, -324, -8, -133, -2.57184, -120.334 )
+script = ExtResource( 21 )
+
+[node name="Hull" type="Sprite" parent="."]
+visible = false
+light_mask = 5
+material = SubResource( 7 )
+position = Vector2( -1, -23 )
+z_index = 19
+texture = ExtResource( 23 )
+normal_map = ExtResource( 24 )
+hframes = 11
+region_enabled = true
+region_rect = Rect2( 0, 160, 2816, 336 )
+script = ExtResource( 21 )
+
+[node name="AudioSparks" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+pitch_scale = 0.7
+bus = "SFX"
+script = ExtResource( 9 )
+
+[node name="Front Bumper" type="Node2D" parent="."]
+visible = false
+position = Vector2( -1, -147 )
+script = ExtResource( 30 )
+rampUpTime = 0.25
+
+[node name="Claw Holder" type="Sprite" parent="Front Bumper"]
+material = ExtResource( 32 )
+use_parent_material = true
+z_index = 9
+texture = ExtResource( 23 )
+normal_map = ExtResource( 24 )
+region_enabled = true
+region_rect = Rect2( 48, 96, 160, 48 )
+
+[node name="Claw Right" type="RigidBody2D" parent="Front Bumper/Claw Holder"]
+position = Vector2( 17, -15 )
+collision_layer = 2
+collision_mask = 7
+physics_material_override = ExtResource( 12 )
+continuous_cd = 2
+script = ExtResource( 13 )
+lidarResponse = 0
+
+[node name="Claw Right" type="Sprite" parent="Front Bumper/Claw Holder/Claw Right"]
+material = ExtResource( 32 )
+use_parent_material = true
+position = Vector2( -1, -16 )
+z_index = -1
+texture = ExtResource( 23 )
+normal_map = ExtResource( 24 )
+region_enabled = true
+region_rect = Rect2( 144, 16, 32, 64 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Front Bumper/Claw Holder/Claw Right"]
+light_mask = 0
+position = Vector2( -17, 21 )
+polygon = PoolVector2Array( 0, -52, 8, -52, 12, -45.6702, 12, -25.6702, 16, -21.67, 24, -29.67, 16, -41.67, 12, -53.67, 1.90735e-06, -61.67 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Front Bumper/Claw Holder/Claw Right"]
+node_a = NodePath("../../../..")
+node_b = NodePath("..")
+bias = 0.8
+
+[node name="Claw Left" type="RigidBody2D" parent="Front Bumper/Claw Holder"]
+position = Vector2( -17, -15 )
+collision_layer = 2
+collision_mask = 7
+physics_material_override = ExtResource( 12 )
+continuous_cd = 2
+script = ExtResource( 13 )
+lidarResponse = 0
+
+[node name="Claw Left" type="Sprite" parent="Front Bumper/Claw Holder/Claw Left"]
+material = ExtResource( 32 )
+use_parent_material = true
+position = Vector2( 1, -16 )
+z_index = -1
+texture = ExtResource( 23 )
+normal_map = ExtResource( 24 )
+region_enabled = true
+region_rect = Rect2( 80, 16, 32, 64 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Front Bumper/Claw Holder/Claw Left"]
+light_mask = 0
+position = Vector2( 17, 21 )
+polygon = PoolVector2Array( 1.90735e-06, -61.67, -12, -53.67, -16, -41.67, -24, -29.67, -16, -21.67, -12, -25.6702, -12, -45.6702, -8, -52, 0, -52 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Front Bumper/Claw Holder/Claw Left"]
+node_a = NodePath("../../../..")
+node_b = NodePath("..")
+bias = 0.8
+
+[node name="Claw Right Spring 1" type="DampedSpringJoint2D" parent="Front Bumper"]
+position = Vector2( 51, -55 )
+rotation = 1.5708
+node_a = NodePath("../..")
+node_b = NodePath("../Claw Holder/Claw Right")
+bias = 0.7
+length = 64.0
+rest_length = 48.0
+stiffness = 64.0
+damping = 0.6
+
+[node name="Claw Left Spring 1" type="DampedSpringJoint2D" parent="Front Bumper"]
+position = Vector2( -51, -55 )
+rotation = -1.5708
+node_a = NodePath("../..")
+node_b = NodePath("../Claw Holder/Claw Left")
+bias = 0.7
+length = 64.0
+rest_length = 48.0
+stiffness = 64.0
+damping = 0.6
+
+[node name="Open" type="AudioStreamPlayer" parent="Front Bumper"]
+stream = ExtResource( 31 )
+volume_db = -5.0
+pitch_scale = 0.5
+bus = "SFX"
+script = ExtResource( 9 )
+
+[node name="Close" type="AudioStreamPlayer" parent="Front Bumper"]
+stream = ExtResource( 33 )
+volume_db = -5.0
+pitch_scale = 0.75
+bus = "SFX"
+script = ExtResource( 9 )
+
+[node name="Struggle" type="AudioStreamPlayer" parent="Front Bumper"]
+stream = ExtResource( 34 )
+volume_db = -80.0
+autoplay = true
+bus = "SFX"
+script = ExtResource( 9 )
+
+[node name="CabinLight" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( -1, -127 )
+z_index = 20
+texture = ExtResource( 27 )
+region_rect = Rect2( 16, -48, 224, 128 )
+script = ExtResource( 16 )
+spotlightBrightness = 8.0
+
+[node name="Light" type="Light2D" parent="CabinLight"]
+visible = false
+light_mask = 7
+position = Vector2( 3.41061e-13, -32 )
+enabled = false
+texture = ExtResource( 29 )
+texture_scale = 24.0
+energy = 16.0
+range_height = 20.0
+range_z_min = -4096
+range_z_max = 4096
+range_item_cull_mask = 31
+shadow_enabled = true
+shadow_gradient_length = 8.0
+shadow_filter = 5
+shadow_filter_smooth = 4.0
+shadow_item_cull_mask = 3
+
+[node name="ShipCamera" parent="." instance=ExtResource( 17 )]
+position = Vector2( -1, -7 )
+
+[node name="Collider" type="CollisionPolygon2D" parent="."]
+visible = false
+light_mask = 0
+position = Vector2( -1, -7 )
+z_index = 50
+polygon = PoolVector2Array( -30, -150, -30, -154, -12, -154, -12, -118, -32, -92, -32, 4, -18, 30, 20, 30, 32, 4, 32, -92, 12, -118, 12, -154, 30, -154, 30, -150, 56, -150, 56, -170, 70, -170, 70, 73, 80, 78, 80, 86, 70, 90, 70, 126, 53, 126, 20, 122, 24, 138, 20, 146, -20, 146, -24, 138, -20, 122, -59, 126, -70, 126, -70, 89, -80, 86, -80, 78, -70, 75, -70, -170, -56, -170, -56, -150 )
+
+[node name="CargoHoldArea" type="Area2D" parent="."]
+visible = false
+position = Vector2( -1, -7 )
+z_index = 50
+collision_layer = 524288
+collision_mask = 33
+monitorable = false
+gravity = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CargoHoldArea"]
+polygon = PoolVector2Array( -7, -185, 8, -185, 15, -154, 15, -119, 35, -94, 34, 5, 21, 33, -19, 33, -35, 3, -35, -93, -15, -119, -15, -154 )
+
+[node name="CargoHoldAreaHull" type="Area2D" parent="."]
+visible = false
+position = Vector2( -1, -7 )
+z_index = 50
+collision_layer = 0
+collision_mask = 33
+monitorable = false
+gravity = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CargoHoldAreaHull"]
+polygon = PoolVector2Array( -68, -168, -58, -168, -58, -147, 57.8077, -146.931, 58, -168, 68, -168, 68, 75, 78, 80, 78, 84, 68, 88.7848, 68, 123, 54, 123, 17, 119, 22, 138, 19, 144, -19, 144, -22, 138, -17, 119, -58, 123, -68, 123, -68, 88, -78, 84, -78, 80, -68, 76 )
+
+[node name="engine-main" parent="." instance_placeholder="res://ships/modules/TorchSlot.tscn"]
+position = Vector2( -1, 157 )
+command = "m"
+
+[node name="thruster-lt" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( -65, -183 )
+rotation = 3.14159
+command = "b"
+
+[node name="thruster-rt" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( 63, -183 )
+rotation = -3.14159
+command = "b"
+
+[node name="thruster-rb" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( 194, 234 )
+rotation = 0.785398
+command = "f"
+
+[node name="thruster-lb" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( -197, 229 )
+rotation = -0.785398
+scale = Vector2( 1, 1 )
+command = "f"
+
+[node name="thruster-br" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( 214, 221 )
+rotation = -2.00713
+command = "r<"
+
+[node name="thruster-bl" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( -217, 216 )
+rotation = 2.00713
+command = "l>"
+
+[node name="thruster-tl" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( -75, -173 )
+rotation = 1.5708
+command = "r>"
+
+[node name="thruster-tr" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( 73, -173 )
+rotation = -1.5708
+command = "l<"
+
+[node name="thruster-tl2" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( -75, -97 )
+rotation = 1.5708
+type = "propulsion.rcss"
+command = "r>"
+
+[node name="thruster-tr2" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( 78, -96 )
+rotation = -1.5708
+type = "propulsion.rcss"
+command = "l<"
+
+[node name="Alert" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
+bus = "SFX"
+script = ExtResource( 9 )
+
+[node name="Collect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 26 )
+volume_db = -5.0
+bus = "SFX"
+script = ExtResource( 9 )
+
+[node name="AudioImpact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SFX"
+script = ExtResource( 9 )
+
+[node name="AudioFatigue" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "SFX"
+script = ExtResource( 9 )
+
+[node name="AudioPlume" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "SFX"
+script = ExtResource( 9 )
+
+[node name="Light2D" type="Light2D" parent="."]
+material = SubResource( 3 )
+position = Vector2( -33, -245.33 )
+editor_only = true
+texture = ExtResource( 6 )
+energy = 5.0
+range_height = 50.0
+
+[node name="Light2D2" type="Light2D" parent="."]
+position = Vector2( 347, -53.3298 )
+editor_only = true
+texture = ExtResource( 6 )
+texture_scale = 4.0
+energy = 2.0
+range_height = 50.0
+
+[node name="WeaponSlot" parent="." instance_placeholder="res://weapons/WeaponSlot.tscn"]
+visible = false
+position = Vector2( -1, -207 )
+z_index = 22
+toggleCommand = "ship_slot_main_toggle"
+
+[node name="WeaponLeft" parent="." instance_placeholder="res://weapons/WeaponSlot.tscn"]
+visible = false
+position = Vector2( -39, -192 )
+z_index = 22
+slot = "left"
+toggleCommand = "ship_slot_left_toggle"
+
+[node name="WeaponRight" parent="." instance_placeholder="res://weapons/WeaponSlot.tscn"]
+visible = false
+position = Vector2( 37, -192 )
+z_index = 22
+slot = "right"
+toggleCommand = "ship_slot_right_toggle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
+autoplay = "appear"
+anims/appear = SubResource( 8 )
+
+[node name="AIdebug" parent="." instance=ExtResource( 11 )]
+visible = false
+position = Vector2( -1, -7 )
+
+[node name="MineralProcessingUnit" parent="." instance_placeholder="res://ships/modules/MineralProcessingUnit.tscn"]
+visible = false
+position = Vector2( -1, -7 )
+
+[node name="MineralProcessingUnit_FSO" parent="." instance_placeholder="res://ships/modules/MineralProcessingUnit_FSO.tscn"]
+visible = false
+position = Vector2( -1, -7 )
+
+[node name="MineralProcessingUnit_SMELT" parent="." instance_placeholder="res://ships/modules/MineralProcessingUnit_SMELT.tscn"]
+visible = false
+position = Vector2( -1, -7 )
+
+[node name="MineralProcessingUnit_FAB" parent="." instance=ExtResource( 14 )]
+visible = false
+position = Vector2( -1, -7 )
+
+[node name="AuxSlot" parent="." instance=ExtResource( 20 )]
+position = Vector2( -1, -7 )
+
+[node name="SYSTEM_REACTIONWHEEL" parent="." instance=ExtResource( 19 )]
+
+[node name="AI" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( -1, -7 )
+
+[node name="CollisionArea" parent="AI" index="3"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/CollisionArea" index="0"]
+light_mask = 0
+position = Vector2( 0, -24 )
+shape = SubResource( 5 )
+
+[node name="DangerArea" parent="AI" index="4"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/DangerArea" index="0"]
+light_mask = 0
+shape = SubResource( 6 )
+
+[node name="CutsceneSpawnInhibitor" parent="AI" index="5"]
+visible = false
+
+[node name="Hud" parent="." instance=ExtResource( 10 )]
+
+[node name="reactor" parent="." instance_placeholder="res://ships/modules/NuclearReactor.tscn"]
+position = Vector2( -1, 77 )
+z_index = 20
+texture = ExtResource( 25 )
+hframes = 11
+region_rect = Rect2( 0, 348, 2816, 160 )
+
+[node name="CargoBaffles" parent="." instance=ExtResource( 18 )]
+position = Vector2( -1, -7 )
+
+[editable path="AI"]

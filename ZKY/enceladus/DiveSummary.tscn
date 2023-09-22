@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ZKY/enceladus/DiveSummaryExtra.gd" type="Script" id=1]
+[ext_resource path="res://enceladus/DiveSummary.tscn" type="PackedScene" id=2]
+
+[sub_resource type="ViewportTexture" id=1]
+flags = 5
+viewport_path = NodePath("PC/Vmargin/ViewportContainer/Viewport")
+
+[node name="Summary" instance=ExtResource( 2 )]
+
+[node name="PC" parent="." index="0"]
+margin_right = 1587.0
+
+[node name="Vmargin" parent="PC" index="0"]
+margin_right = 1507.0
+
+[node name="ViewportContainer" parent="PC/Vmargin" index="0"]
+margin_right = 1489.0
+
+[node name="Viewport" parent="PC/Vmargin/ViewportContainer" index="0"]
+size = Vector2( 1487, 584 )
+
+[node name="TextureRect" parent="PC/Vmargin" index="1"]
+margin_right = 1489.0
+texture = SubResource( 1 )
+
+[node name="VBoxContainer" parent="PC" index="1"]
+margin_right = 1507.0
+
+[node name="HBoxContainer" parent="PC/VBoxContainer" index="0"]
+margin_right = 1491.0
+
+[node name="Total" parent="PC/VBoxContainer/HBoxContainer" index="1"]
+margin_right = 1448.0
+
+[node name="E" parent="PC/VBoxContainer/HBoxContainer" index="2"]
+margin_left = 1452.0
+margin_right = 1491.0
+
+[node name="Totals" parent="PC/VBoxContainer" index="1"]
+margin_right = 1491.0
+
+[node name="MarginContainer2" parent="PC/VBoxContainer" index="2"]
+margin_right = 1491.0
+
+[node name="ByShip" parent="PC/VBoxContainer" index="3"]
+margin_left = 1491.0
+margin_right = 1491.0
+
+[node name="MarginContainer" parent="PC/VBoxContainer" index="4"]
+margin_right = 1491.0
+
+[node name="HBoxContainer" parent="PC/VBoxContainer/MarginContainer" index="0"]
+margin_right = 1475.0
+
+[node name="Sell" parent="PC/VBoxContainer/MarginContainer/HBoxContainer" index="0"]
+margin_right = 454.0
+
+[node name="Keep" type="Button" parent="PC/VBoxContainer/MarginContainer/HBoxContainer" index="1"]
+margin_left = 486.0
+margin_right = 944.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "ENCELADUS_DIVE_KEEP"
+script = ExtResource( 1 )
+
+[node name="Store" parent="PC/VBoxContainer/MarginContainer/HBoxContainer" index="2"]
+margin_left = 976.0
+margin_right = 1459.0

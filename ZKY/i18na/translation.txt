@@ -1,0 +1,54 @@
+--Modified Translations--
+SYSTEM_AMMO_0|Empty
+
+--New Translations--
+
+-misc-
+ENCELADUS_DIVE_KEEP|Keep Processed
+
+-Obonto Trades-
+DIALOG_HABITAT_NEED_MG|Welcome {target/shipname}. Do you have processed magnesium for trade?
+DIALOG_HABITAT_NEED_TI|Welcome {target/shipname}. Do you have processed titanium for trade?
+DIALOG_HABITAT_NEED_NI|Welcome {target/shipname}. Do you have processed nickel for trade?
+DIALOG_HABITAT_NEED_CU|Welcome {target/shipname}. Do you have processed copper for trade?
+DIALOG_HABITAT_NEED_MG_DESPERATE|I'm really glad to see you {target/shipname}, we could really use some processed magnesium. We'll pay you premium.
+DIALOG_HABITAT_NEED_TI_DESPERATE|I'm really glad to see you {target/shipname}, we could really use some processed titanium. We'll pay you premium.
+DIALOG_HABITAT_NEED_NI_DESPERATE|I'm really glad to see you {target/shipname}, we could really use some processed nickel. We'll pay you premium.
+DIALOG_HABITAT_NEED_CU_DESPERATE|I'm really glad to see you {target/shipname}, we could really use some processed copper. We'll pay you premium.
+
+-THICCC-
+SYSTEM_EXCOM|THI Combined Cargo Container
+SYSTEM_EXCOM_DESC|A variant of the standard THI Cargo Container that utilizes a combined cargo bay to increase versitility at the cost of reduced total capacity and increased dry mass. These require on-site mineral processing units to utilize. The equipment purchase of the cargo cradle comes with a lease covering the resupply of new pods for as long as the owner holds the license.\n\nStation control warns that retrofit with certain RCS configurations may risk overheating the Cargo Container's micro-reactor. Captains assume all such liability.
+SYSTEM_EXCOM_SPECS|Cargo capacity (combined): 60,000 kg\nPower usage (nominal): 20 MW\nCradle mass: 500 kg\nManufacturer: Titan Heavy Industries
+SYSTEM_EXCOM_MANUAL|Automatically stores processed ore.\nYou can customize ore stored on Geologist tab.\nRequires mineral processing unit to be used effectively.\nWill unbalance the ship if only one is installed.\nCan be ejected by disabling the hardpoint.\nThe ejected container will attempt to return to the station with its cargo automatically.\nEmpty cradle arm can catch drones and lifepods.
+
+-OCP-209-M-
+SHIP_OCP209-M|OCP-209 (mono-refit)
+SHIP_OCP209-M_SPECS|Make: Obonto Microengineering\nHigh-Stress Hardpoints: 1\nLow-Stress Hardpoints: 4\nCrew: 8\nDry mass: 180,000 kg\nCargo bay: 795 m^3\nProcessed cargo storage (combined): 50,000 kg
+SHIP_OCP209-M_DESC|wip
+
+-AT225-H-
+SHIP_AT225-H|Antonoff-Titan K225 "Atlas"
+SHIP_AT225-H_SPECS|Make: Antonoff-Titan Heavy Industries\nHigh-Stress Hardpoints: 2\nLow-Stress Hardpoints: 2\nDocking Bays: 2\nCrew: 12\nDry mass: 175,000 kg\nCargo bay: 395 m^3\nProcessed cargo storage: 7,000 kg
+SHIP_AT225-H_DESC|wip
+
+
+--Silly Things--
+
+-AT222222225-
+SHIP_AT222222225|Antonoff-Titan K222222225
+SHIP_AT222222225_SPECS|Make: Antonoff-Titan Heavy Industries\nLow-Stress Hardpoints: 2\nDocking Bays: 10\nCrew: 12\nDry mass: 225,000 kg\nCargo bay: 770 m^3\nProcessed cargo storage: 7,000 kg
+SHIP_AT222222225_DESC|A monument to all our sins.
+SYSTEM_HUD_AT222222225|AT-K222222225
+SYSTEM_HUD_AT222222225_DESC|A modified version of the K225 HUD for use with the K222222225 variant. This HUD features an extended ship readout to display the status of the additional docking bays and RCS.
+SLOT_LEFT_BAY4|Left Far-Back Docking Bay
+SLOT_RIGHT_BAY4|Right Far-Back Docking Bay
+SLOT_LEFT_BAY5|Left Far-Far-Back Docking Bay
+SLOT_RIGHT_BAY5|Right Far-Far-Back Docking Bay
+
+-AT225-HH-
+SHIP_AT225-HH|Antonoff-Titan K225 "Actiorione"
+SHIP_AT225-HH_SPECS|Make: Antonoff-Titan Heavy Industries\nHigh-Stress Hardpoints: 4\nCrew: 12\nDry mass: 200,000 kg\nCargo bay: 395 m^3\nProcessed cargo storage: 7,000 kg
+SHIP_AT225-HH_DESC|Stop asking for more High-Stress hardpoints.
+SLOT_MAINFRONTLEFT|Front-Left High-Stress Hardpoint
+SLOT_MAINFRONTRIGHT|Front-Right High-Stress Hardpoint

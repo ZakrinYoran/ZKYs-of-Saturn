@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ZKY/ships/ATK225-H.tscn" type="PackedScene" id=1]
+
+[node name="ATK225-HH" instance=ExtResource( 1 )]
+mass = 200.0
+shipName = "SHIP_AT225-HH"
+hullPrice = 3174749
+
+[node name="Collider" parent="." index="7"]
+polygon = PoolVector2Array( -60, -74.6154, -60, -103.846, -124.615, -219.231, -112.308, -238.462, -38.4615, -238.462, -38.4615, -250, -34.6154, -253.846, -19.2308, -253.846, -19.2308, -260.769, -14.6154, -260.769, -14.6154, -136.154, -23.8462, -123.077, -21.5385, 150, -13.8462, 173.077, 16.1538, 173.077, 23.0769, 150, 23.8462, -123.077, 13.8462, -136.154, 14.6154, -260.769, 19.2308, -260.769, 19.2308, -253.846, 33.8462, -253.846, 38.4615, -249.231, 38.4615, -238.462, 113.077, -238.462, 124.615, -218.462, 60, -103.077, 60, -74.6154, 123.846, 40.7692, 117.692, 52.3077, 124.615, 63.8462, 58.4615, 183.077, 58.4615, 216.923, 80, 216.923, 121.538, 270.769, 118.462, 293.077, 106.154, 303.846, -102.308, 303.077, -116.923, 293.077, -121.538, 270, -73.8462, 216.154, -60.7692, 216.154, -60.7692, 179.231, -123.846, 63.8462, -117.692, 52.3077, -123.846, 40.7692, -60, -74.6154 )
+
+[node name="weapon-left" parent="." index="38"]
+position = Vector2( -175, -450 )
+rotation = -0.523599
+slot = "mainFrontLeft"
+
+[node name="SYSTEM_SALVAGE_ARM" parent="weapon-left" index="11"]
+visible = true
+flip = true
+
+[node name="SYSTEM_PDMWG-L" parent="weapon-left" index="13"]
+visible = false
+
+[node name="weapon-right" parent="." index="39"]
+position = Vector2( 175, -450 )
+rotation = 0.523599
+slot = "mainFrontRight"
+
+[node name="SYSTEM_SALVAGE_ARM" parent="weapon-right" index="11"]
+visible = true
+
+[node name="SYSTEM_PDMWG-R" parent="weapon-right" index="14"]
+visible = false
+
+[node name="weapon-left-back" parent="." index="40"]
+visible = false
+remove = true
+toggleCommand = ""
+
+[node name="weapon-right-back" parent="." index="41"]
+visible = false
+remove = true
+toggleCommand = ""
+
+[node name="weapon-left-heavy" parent="." index="42"]
+toggleCommand = "ship_slot_3"
+
+[node name="weapon-right-heavy" parent="." index="43"]
+toggleCommand = "ship_slot_4"
+
+[editable path="weapon-left"]
+[editable path="weapon-right"]
+[editable path="weapon-left-back"]
+[editable path="weapon-right-back"]
+[editable path="weapon-left-heavy"]
+[editable path="weapon-right-heavy"]
+[editable path="weapon-left-back2"]
+[editable path="weapon-right-back2"]
+[editable path="weapon-left-back3"]
+[editable path="weapon-right-back3"]
+[editable path="AI"]

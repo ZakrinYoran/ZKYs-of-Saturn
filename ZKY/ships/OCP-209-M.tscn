@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ships/ocp-209.tscn" type="PackedScene" id=1]
+[ext_resource path="res://weapons/WeaponSlot.tscn" type="PackedScene" id=2]
+
+[node name="OCP-209" instance=ExtResource( 1 )]
+shipName = "SHIP_OCP209-M"
+
+[node name="WeaponLeft" parent="." index="24"]
+visible = false
+
+[node name="WeaponRight" parent="." index="25"]
+visible = false
+
+[node name="WeaponMain" parent="." index="26" instance=ExtResource( 2 )]
+position = Vector2( 175, 0 )
+rotation = 1.5708
+z_index = 36
+toggleCommand = "ship_slot_3"
+
+[node name="SYSTEM_EMD14" parent="WeaponMain" index="3"]
+visible = false
+
+[node name="SYSTEM_SALVAGE_ARM" parent="WeaponMain" index="11"]
+visible = true
+position = Vector2( 3.05176e-05, 175 )
+
+[node name="WeaponLeftRear" parent="." index="27" instance=ExtResource( 2 )]
+position = Vector2( -200, -40 )
+rotation = -0.785398
+z_index = 28
+slot = "leftBack"
+toggleCommand = "ship_slot_4"
+
+[node name="SYSTEM_EMD14" parent="WeaponLeftRear" index="3"]
+visible = false
+
+[node name="SYSTEM_DND_HAUL" parent="WeaponLeftRear" index="7"]
+visible = true
+
+[node name="SYSTEM_EXSTORAGE-L" parent="WeaponLeftRear" index="15"]
+visible = true
+
+[node name="SYSTEM_ACTEMD14" parent="WeaponLeftRear" index="19"]
+pivotPath = NodePath("Pivot")
+weaponPath = NodePath("Pivot/massdriver")
+audioPath = NodePath("Actuation")
+lightPath = NodePath("Pivot/Light")
+
+[node name="SYSTEM_ACL200P" parent="WeaponLeftRear" index="20"]
+weaponPath = NodePath("Pivot/laster-pulse")
+
+[node name="WeaponRightRear" parent="." index="28" instance=ExtResource( 2 )]
+position = Vector2( -200, 40 )
+rotation = -2.35619
+z_index = 28
+slot = "rightBack"
+toggleCommand = "ship_slot_5"
+
+[node name="SYSTEM_EMD14" parent="WeaponRightRear" index="3"]
+visible = false
+
+[node name="SYSTEM_DND_HAUL" parent="WeaponRightRear" index="7"]
+visible = true
+
+[node name="SYSTEM_EXSTORAGE-R" parent="WeaponRightRear" index="16"]
+visible = true
+
+[node name="SYSTEM_ACTEMD14" parent="WeaponRightRear" index="19"]
+pivotPath = NodePath("Pivot")
+weaponPath = NodePath("Pivot/massdriver")
+audioPath = NodePath("Actuation")
+lightPath = NodePath("Pivot/Light")
+
+[node name="SYSTEM_ACL200P" parent="WeaponRightRear" index="20"]
+weaponPath = NodePath("Pivot/laster-pulse")
+
+[node name="WeaponHardTop" parent="." index="29"]
+visible = false
+slot = ""
+command = ""
+remove = true
+toggleCommand = ""
+
+[node name="WeaponHardRight" parent="." index="30"]
+visible = false
+slot = ""
+command = ""
+remove = true
+toggleCommand = ""
+
+[node name="MineralProcessingUnit_FAB" parent="." index="36"]
+visible = false
+
+[editable path="WeaponMain"]
+[editable path="WeaponLeftRear"]
+[editable path="WeaponRightRear"]
+[editable path="WeaponHardTop"]
+[editable path="WeaponHardRight"]
+[editable path="MineralProcessingUnit_FSO"]
+[editable path="AI"]
