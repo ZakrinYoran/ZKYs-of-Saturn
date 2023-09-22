@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://weapons/WeaponSlot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ships/ocp-209.tscn" type="PackedScene" id=2]
+
+[node name="OCP-209-D" instance=ExtResource( 2 )]
+mass = 200.0
+crewMoraleBonus = 0.0
+shipName = "SHIP_OCP209-D"
+
+[node name="SYSTEM_ACTEMD14" parent="WeaponHardTop" index="19"]
+pivotPath = NodePath("Pivot")
+weaponPath = NodePath("Pivot/massdriver")
+audioPath = NodePath("Actuation")
+lightPath = NodePath("Pivot/Light")
+
+[node name="SYSTEM_ACL200P" parent="WeaponHardTop" index="20"]
+weaponPath = NodePath("Pivot/laster-pulse")
+
+[node name="SYSTEM_ACTEMD14" parent="WeaponHardRight" index="19"]
+pivotPath = NodePath("Pivot")
+weaponPath = NodePath("Pivot/massdriver")
+audioPath = NodePath("Actuation")
+lightPath = NodePath("Pivot/Light")
+
+[node name="SYSTEM_ACL200P" parent="WeaponHardRight" index="20"]
+weaponPath = NodePath("Pivot/laster-pulse")
+
+[node name="DroneSlot" parent="." index="28" instance=ExtResource( 1 )]
+position = Vector2( 0, -282 )
+slot = "middleDrone"
+toggleCommand = "ship_slot_5"
+
+[node name="SYSTEM_EMD14" parent="DroneSlot" index="3"]
+visible = false
+
+[node name="SYSTEM_ACTEMD14" parent="DroneSlot" index="19"]
+pivotPath = NodePath("Pivot")
+weaponPath = NodePath("Pivot/massdriver")
+audioPath = NodePath("Actuation")
+lightPath = NodePath("Pivot/Light")
+
+[node name="SYSTEM_ACL200P" parent="DroneSlot" index="20"]
+weaponPath = NodePath("Pivot/laster-pulse")
+
+[editable path="WeaponHardTop"]
+[editable path="WeaponHardRight"]
+[editable path="DroneSlot"]
+[editable path="MineralProcessingUnit_FSO"]
+[editable path="AI"]

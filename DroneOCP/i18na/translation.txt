@@ -1,0 +1,7 @@
+--New Translations--
+
+SLOT_MIDDLE_DRONE|Drone mount
+
+SHIP_OCP209-D|OCP-209-D
+SHIP_OCP209-D_SPECS|Make: Obonto Microengineering\nHigh-Stress Hardpoints: 2\nLow-Stress Hardpoints: 2\nDrone Hardpoints: 1\nCrew: 8\nDry mass: 204,500 kg\nCargo bay: 795 m^3\nProcessed cargo storage (combined): 50,000 kg
+SHIP_OCP209-D_DESC|A modification of the OCP-209 that adds an under-slung drone hardpoint to assist in the positioning of objects under construction. The necessary structure to support the additional hardpoint increases her dry mass, and the additional equipment mounted near the cabin reduces crew comfort.
