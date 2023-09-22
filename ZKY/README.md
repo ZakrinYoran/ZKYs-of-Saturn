@@ -43,7 +43,7 @@ When first launching the game, the mod will create a configuration file in your 
 
 #### Features:
 
-Items/mechanics added by the mod, relevent settings indicatedlike this: (`settingName:parameterType`). Please be careful to only use the specified data types, or you will get unexpected behavior.
+Items/mechanics added by the mod, relevent settings indicated like this: (`settingName:parameterType`). Please be careful to only use the specified data types, or you may get unexpected behavior.
 
 - 1 New transponder format (`addTransponders:bool`).
 - 2 New ship variants in the dealership (`addShips:bool`).
