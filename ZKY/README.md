@@ -68,6 +68,7 @@ Items/mechanics added by the mod, relevent settings indicated like this: (`setti
 - Added the ability to adjust the value of minerals, both modded `(modMineralPriceAdjust:float)` and vanilla `(vanillaMineralPriceAdjust:float)`.
 - Added the ability to adjust the rate crew gains experience `(xpAdjust:float)`.
 - Added a button (default: "R") to flip the autopilot heading 180 degrees, for easier "turn & burn" manuvers `(autopilot_flip_heading:key)`. Thanks to @cxcorp for the original implementation.
+- Added a button (default: "M") that toggles the MPU on/off without the need to open the OMS `(toggle_mpu:key)`.
 
 #### Silly Features:
 
