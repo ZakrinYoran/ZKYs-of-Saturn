@@ -6,6 +6,13 @@ var onlyMinerals = true
 var mineralConfig = []
 var mineralDumpRate = 100.0
 
+# Toggle the MPU when the key is pressed
+func _input(event):
+	if !ship.cutscene and ship.isPlayerControlled():
+		if event.is_action_pressed("toggle_mpu"):
+			enabled = not enabled
+
+
 func _ready():
 	mineralConfig = CurrentGame.traceMinerals.duplicate()
 

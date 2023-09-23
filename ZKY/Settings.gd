@@ -1,7 +1,7 @@
 extends "res://Settings.gd"
 
 # Mod version
-const ZKY_VERSION = "0.0.0"
+const ZKY_VERSION = "0.1.0"
 
 # Default config values
 var ZKYConfig = {
@@ -45,7 +45,8 @@ var ZKYConfig = {
 		"addATK225-HH":false,
 	},
 	"input":{
-		"autopilot_flip_heading":[ "R" ]
+		"autopilot_flip_heading":[ "R" ],
+		"toggle_mpu":[ "M" ],
 	}, 
 }
 
