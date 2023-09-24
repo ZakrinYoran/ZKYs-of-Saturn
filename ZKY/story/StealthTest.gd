@@ -3,7 +3,7 @@ extends Node
 export var chaosLimit = 0.3
 export var minCapacity = 0.6
 export var minMoney = 30000
-export var disabled:bool = false
+export var disabled:bool = true
 
 func canBeAt(pos):
 	if disabled:

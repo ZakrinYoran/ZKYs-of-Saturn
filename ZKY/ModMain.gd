@@ -18,6 +18,9 @@ func _init(modLoader = ModLoader):
 	if modConfig["modSettings"]["loadDLC"]:
 		loadDLC()
 
+# WIP, does not work
+#	installScriptExtension("Music.gd")
+
 # Scenes that use placeholders must be loaded as soon as possible
 	if modConfig["additions"]["addEquipment"]:
 		replaceScene("weapons/WeaponSlot.tscn")

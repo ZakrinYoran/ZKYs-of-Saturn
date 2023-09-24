@@ -49,7 +49,7 @@ Items/mechanics added by the mod, relevent settings indicated like this: (`setti
 - 2 New ship variants in the dealership (`addShips:bool`).
   - `ATK225 "Atlas"`: A variant of the ATK225 that sacrifices the four rear docking bays for two high-stress mounts on the side, the required modifications also remove two of the RCS positions.
   - `OCP-209 (mono-refit)`: A variant of the OCP-209 with a single centrally mounted high-stress hardpoint, two additional drone/cargo mounts are on the back of the cargo bay.
-- 6 New minerals to mine (`addMinerals:bool`).
+- (WIP) 6 New minerals to mine (`addMinerals:bool`).
 - 4 New Obonto trades (`addMinerals:bool` and `addEvents:bool`) .
 - 4 Processed cargo hold behaviors (`processedBehavior:string`):  
   - `default`: Standard behavior, doubles effective cargo hold of non-combined ships.

@@ -5,6 +5,5 @@
 
 [node name="TheRing" instance=ExtResource( 1 )]
 
-[node name="DerelictStealth" type="Node" parent="." index="73"]
+[node name="StealthTest" type="Node" parent="." index="73"]
 script = ExtResource( 2 )
-disabled = true

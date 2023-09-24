@@ -24,7 +24,7 @@ var ZKYConfig = {
 	}, 
 	"additions":{
 		"addTransponders":true,
-		"addMinerals":true,
+		"addMinerals":false,
 		"addShips":true,
 		"addEquipment":true,
 		"addEvents":true,
@@ -48,6 +48,17 @@ var ZKYConfig = {
 		"autopilot_flip_heading":[ "R" ],
 		"toggle_mpu":[ "M" ],
 	}, 
+#	"customMusic":{
+#		"mood_battle":"",
+#		"mood_boss":"",
+#		"mood_mystery":"",
+#		"mood_peaceful":"",
+#		"mood_peaceful_alternate":"",
+#		"mood_rock":"",
+#		"mood_spooky":"",
+#		"mood_western":"",
+#		"mood_western_alternate":"",
+#	},
 }
 
 var ZKYPath = "user://ZKYsettings.cfg"
