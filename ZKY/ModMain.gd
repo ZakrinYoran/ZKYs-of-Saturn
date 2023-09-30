@@ -113,7 +113,7 @@ func updateTL():
 	Debug.l("ZKY: Updating Translations")
 
 	var tlFile = File.new()
-	tlFile.open("res://ZKY/i18na/translation.txt", File.READ)
+	tlFile.open("res://ZKY/i18n/translation.txt", File.READ)
 
 	var translation = Translation.new()
 	translation.locale = "en"

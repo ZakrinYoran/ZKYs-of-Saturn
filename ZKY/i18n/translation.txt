@@ -25,12 +25,12 @@ SYSTEM_EXCOM_MANUAL|Automatically stores processed ore.\nYou can customize ore s
 -OCP-209-M-
 SHIP_OCP209-M|OCP-209 (mono-refit)
 SHIP_OCP209-M_SPECS|Make: Obonto Microengineering\nHigh-Stress Hardpoints: 1\nLow-Stress Hardpoints: 4\nCrew: 8\nDry mass: 180,000 kg\nCargo bay: 795 m^3\nProcessed cargo storage (combined): 50,000 kg
-SHIP_OCP209-M_DESC|wip
+SHIP_OCP209-M_DESC|A modification of the OCP designed to carry more processed material to construction sites. The feeds for the twin high-stress mounts have been split to supply two container mounts on the opposite side of the vessel, and a single centrally-mounted high-stress hardpoint.
 
 -AT225-H-
 SHIP_AT225-H|Antonoff-Titan K225 "Atlas"
 SHIP_AT225-H_SPECS|Make: Antonoff-Titan Heavy Industries\nHigh-Stress Hardpoints: 2\nLow-Stress Hardpoints: 2\nDocking Bays: 2\nCrew: 12\nDry mass: 175,000 kg\nCargo bay: 395 m^3\nProcessed cargo storage: 7,000 kg
-SHIP_AT225-H_DESC|wip
+SHIP_AT225-H_DESC|A highly complex refit that involves splitting the entire ship into three peices and inverting the central segment. The end result provides enough structural stbility that the power and feeds for the rear docking bays can be fitted to supply a high-stress hardpoint on both sides.
 
 
 --Silly Things--
