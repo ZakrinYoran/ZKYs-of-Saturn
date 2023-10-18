@@ -60,6 +60,7 @@ Items/mechanics added by the mod, relevent settings indicated like this: (`setti
 - Dump processed cargo by disabling minerals on the MPU in the geologist menu (`canDumpProcessed:bool`).
 - (WIP) Added the ability to keep processed cargo in your ship after a dive (`canKeepProcessed:bool`).
 - Click on a mineral in the geologist menu to invert selection (`canToggleColumn:bool`).
+- Toggle the power of equipment in the OMS while holding `action_modifier:key` to toggle all equipment of that type.
 - Added the ability to adjust the frequency of events (`oddityAdjust:float`).
 - Added the ability to adjust how quickly miners appear at the rim (`diggerAdjust:float`). NOTE: These will naturally decay over the course of gameplay, this option will NOT override that behavior.
 - Added a toggle for astrogation being canceled by opening the OMS (`menuStopsAstro:bool`)

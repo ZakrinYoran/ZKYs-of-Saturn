@@ -352,7 +352,6 @@ command = "f"
 [node name="thruster-lb" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
 position = Vector2( -197, 229 )
 rotation = -0.785398
-scale = Vector2( 1, 1 )
 command = "f"
 
 [node name="thruster-br" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]

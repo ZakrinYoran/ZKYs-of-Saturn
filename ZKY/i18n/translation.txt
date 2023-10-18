@@ -30,7 +30,7 @@ SHIP_OCP209-M_DESC|A modification of the OCP designed to carry more processed ma
 -AT225-H-
 SHIP_AT225-H|Antonoff-Titan K225 "Atlas"
 SHIP_AT225-H_SPECS|Make: Antonoff-Titan Heavy Industries\nHigh-Stress Hardpoints: 2\nLow-Stress Hardpoints: 2\nDocking Bays: 2\nCrew: 12\nDry mass: 175,000 kg\nCargo bay: 395 m^3\nProcessed cargo storage: 7,000 kg
-SHIP_AT225-H_DESC|A highly complex refit that involves splitting the entire ship into three peices and inverting the central segment. The end result provides enough structural stbility that the power and feeds for the rear docking bays can be fitted to supply a high-stress hardpoint on both sides.
+SHIP_AT225-H_DESC|A highly complex refit that involves splitting the entire ship into three peices and inverting the central segment. The end result provides enough structural stability that the power and feeds for the rear docking bays can be fitted to supply a high-stress hardpoint on both sides.
 
 
 --Silly Things--

@@ -55,6 +55,7 @@ func _init(modLoader = ModLoader):
 	if modConfig["cargoTweaks"]["canToggleColumn"]:
 		installScriptExtension("hud/components/MineralLabel.gd")
 
+	installScriptExtension("hud/SystemList.gd")
 	installScriptExtension("hud/SystemMineralList.gd")
 
 # Loads ship .tscn files which binds anything related, not giving us a chance to replace them.

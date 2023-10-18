@@ -47,6 +47,7 @@ var ZKYConfig = {
 	"input":{
 		"autopilot_flip_heading":[ "R" ],
 		"toggle_mpu":[ "M" ],
+		"action_modifier":[ "Shift" ],
 	}, 
 #	"customMusic":{
 #		"mood_battle":"",
