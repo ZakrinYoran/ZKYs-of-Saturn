@@ -1,7 +1,7 @@
 extends "res://Settings.gd"
 
 # Mod version
-const ZKY_VERSION = "0.1.3"
+const ZKY_VERSION = "0.2.0"
 
 # Default config values
 var ZKYConfig = {
