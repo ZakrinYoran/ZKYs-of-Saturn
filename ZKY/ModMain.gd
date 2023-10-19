@@ -33,6 +33,9 @@ func _init(modLoader = ModLoader):
 	if modConfig["modSettings"]["updateVersion"]:
 		installScriptExtension("VersionLabel.gd")
 
+	installScriptExtension("menu/SettingsLayer.gd")
+	replaceScene("menu/SettingsLayer.tscn")
+
 	installScriptExtension("CurrentGame.gd")
 	installScriptExtension("TheRing.gd")
 
@@ -46,11 +49,8 @@ func _init(modLoader = ModLoader):
 	if modConfig["cargoTweaks"]["canDumpProcessed"]:
 		installScriptExtension("ships/modules/MineralProcessingUnit.gd")
 
-	if modConfig["gameTweaks"]["escapeVelocityWarning"] != 150:
-		installScriptExtension("hud/Escape Veloity.gd")
-
-	if modConfig["gameTweaks"]["disableMapBoundries"]:
-		installScriptExtension("hud/Leaving Rings.gd")
+	installScriptExtension("hud/Escape Veloity.gd")
+	installScriptExtension("hud/Leaving Rings.gd")
 
 	if modConfig["cargoTweaks"]["canToggleColumn"]:
 		installScriptExtension("hud/components/MineralLabel.gd")

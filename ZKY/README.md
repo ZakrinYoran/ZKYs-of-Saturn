@@ -64,8 +64,8 @@ Items/mechanics added by the mod, relevent settings indicated like this: (`setti
 - Added the ability to adjust the frequency of events (`oddityAdjust:float`).
 - Added the ability to adjust how quickly miners appear at the rim (`diggerAdjust:float`). NOTE: These will naturally decay over the course of gameplay, this option will NOT override that behavior.
 - Added a toggle for astrogation being canceled by opening the OMS (`menuStopsAstro:bool`)
-- Added the ability to adjust the emergency escape velocity (`escapeVelocity:float`) and when the warning appears (`escapeVelocityWarning:float`).
-- Added the ability to remove the map boundries (`disableMapBoundries:bool`).
+- Added the ability to adjust the emergency escape velocity (`escapeVelocity:float`) and when the warning appears (`warningVelocity:float`).
+- Added the ability to remove the map boundries (`mapBoundries:bool`).
 - Added the ability to adjust the value of minerals, both modded `(modMineralPriceAdjust:float)` and vanilla `(vanillaMineralPriceAdjust:float)`.
 - Added the ability to adjust the rate crew gains experience `(xpAdjust:float)`.
 - Added a button (default: "R") to flip the autopilot heading 180 degrees, for easier "turn & burn" manuvers `(autopilot_flip_heading:key)`. Thanks to @cxcorp for the original implementation.

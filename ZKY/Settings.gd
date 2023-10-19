@@ -1,7 +1,7 @@
 extends "res://Settings.gd"
 
 # Mod version
-const ZKY_VERSION = "0.2.0"
+const ZKY_VERSION = "0.3.0"
 
 # Default config values
 var ZKYConfig = {
@@ -16,8 +16,8 @@ var ZKYConfig = {
 	"gameTweaks":{
 		"menuStopsAstro":true,
 		"escapeVelocity":200,
-		"escapeVelocityWarning":150,
-		"disableMapBoundries":false,
+		"warningVelocity":150,
+		"mapBoundries":true,
 		"vanillaMineralPriceAdjust":1,
 		"modMineralPriceAdjust":1,
 		"xpAdjust":1,
@@ -69,11 +69,13 @@ func _ready():
 	loadZKYFromFile()
 	saveZKYToFile()
 
+
 func saveZKYToFile():
 	for section in ZKYConfig:
 		for key in ZKYConfig[section]:
 			ZKYFile.set_value(section, key, ZKYConfig[section][key])
 	ZKYFile.save(ZKYPath)
+
 
 func loadZKYFromFile():
 	var error = ZKYFile.load(ZKYPath)
@@ -84,6 +86,7 @@ func loadZKYFromFile():
 		for key in ZKYConfig[section]:
 			ZKYConfig[section][key] = ZKYFile.get_value(section, key, ZKYConfig[section][key])
 	loadZKYKeymapFromConfig()
+
 
 func loadZKYKeymapFromConfig():
 	for action_name in ZKYConfig.input:

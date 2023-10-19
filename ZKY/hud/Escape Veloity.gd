@@ -1,4 +1,8 @@
 extends "res://hud/Escape Veloity.gd"
 
 func _ready():
-	warnVelocity = float(Settings.ZKYConfig["gameTweaks"]["escapeVelocityWarning"])
+	add_to_group("ZKYSettings")
+	updateSettings()
+
+func updateSettings():
+	warnVelocity = float(Settings.ZKYConfig["gameTweaks"]["warningVelocity"])

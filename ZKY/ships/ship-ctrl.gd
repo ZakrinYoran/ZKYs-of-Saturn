@@ -12,6 +12,15 @@ var escapeVelocity = 2000
 
 # Set up all our variables from the config
 func _ready():
+	add_to_group("ZKYSettings")
+	updateSettings()
+	
+# Disables autopilot acceleration limits
+#	if isPlayerControlled():
+#		autopilotComfortEnabled = false
+
+# Update all the variables that can be changed by settings
+func updateSettings():
 	cargoBehavior = Settings.ZKYConfig["cargoTweaks"]["processedBehavior"]
 	maxCargoTypes = Settings.ZKYConfig["cargoTweaks"]["processedTypes"]
 
@@ -20,10 +29,6 @@ func _ready():
 		cargoCapacityModifier = (baseMineralCount / extendedMineralCount)
 
 	escapeVelocity = (Settings.ZKYConfig["gameTweaks"]["escapeVelocity"] * 10)
-
-# Disables autopilot acceleration limits
-#	if isPlayerControlled():
-#		autopilotComfortEnabled = false
 
 
 # Check if opening the OMS cancels astrogation
@@ -46,7 +51,7 @@ func isInEscapeCondition():
 		return false
 	if not isPlayerControlled():
 		return false
-	if !Settings.ZKYConfig["gameTweaks"]["disableMapBoundries"]:
+	if Settings.ZKYConfig["gameTweaks"]["mapBoundries"]:
 		if CurrentGame.globalCoords(global_position).x < 0:
 			return true
 		if CurrentGame.globalCoords(global_position).x > 3.006e+07:

@@ -3,6 +3,18 @@ SYSTEM_AMMO_0|Empty
 
 --New Translations--
 
+-Settings-
+ZKY_SETTINGS|ZKY Settings
+SETTINGS_ESCAPE_VELOCITY|Escape Velocity
+SETTINGS_WARNING_VELOCITY|Warning Velocity
+SETTINGS_ODDITY_ADJUST|Oddity Adjust
+SETTINGS_DIGGER_ADJUST|Digger Adjust
+SETTINGS_VANILLA_PRICE|Vanilla Price Adjust
+SETTINGS_MODDED_PRICE|Modded Price Adjust
+SETTINGS_XP_ADJUST|Experience Adjust
+SETTINGS_MAP_BOUNDRIES|Map Boundries
+SETTINGS_MENU_STOPS_ASTRO|OMS Stops Astro
+
 -misc-
 ENCELADUS_DIVE_KEEP|Keep Processed
 

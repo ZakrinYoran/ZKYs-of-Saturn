@@ -43,7 +43,7 @@ extends "res://CurrentGame.gd"
 
 
 # Prices of the new minerals
-var extendedMineralPrices = {
+var ZKYMineralPrices = {
 	"Au" : 8.2,
 	"Cu" : 1.6,
 	"Mg" : 0.8,
@@ -53,7 +53,7 @@ var extendedMineralPrices = {
 }
 
 # Colors of the new minerals
-var extendedMineralColors = {
+var ZKYMineralColors = {
 	"Au":Color("e6cf00"),
 	"Cu":Color("d48237"),
 	"Mg":Color("5DA87C"),
@@ -63,7 +63,7 @@ var extendedMineralColors = {
 }
 
 # Add the new minerals to the list of elements that can be in roids
-var extendedTraceMinerals =  [
+var ZKYTraceMinerals =  [
 	"Au", #Similar in price to W, but with smaller average chunks
 	"Cu", #Fills the gap between Fe and the valuable ones
 	"Mg", #Light but very inexpensive
@@ -73,46 +73,34 @@ var extendedTraceMinerals =  [
 ]
 
 # Extra transponder formats
-var extendedTransponderFormats = [
+var ZKYTransponderFormats = [
 	"ZKY-%s",
 ]
 
 # Extra ships that will appear used at the dealership
-var extendedUsedShipsPool = [
+var ZKYUsedShipsPool = [
 	{"name":"AT225-H", "age":24 * 3600 * 365 * 200},
 	{"name":"OCP209-M", "age":24 * 3600 * 365 * 200},
 ]
 
 
 func _ready():
-# Adjust crew XP gains
-	if Settings.ZKYConfig["gameTweaks"]["xpAdjust"] != 1:
-		normalXpGain *= Settings.ZKYConfig["gameTweaks"]["xpAdjust"]
-		mentorXpGain *= Settings.ZKYConfig["gameTweaks"]["xpAdjust"]
-
-# Adjust the prices of modded minerals before we merge them with the vanilla ones
-	if Settings.ZKYConfig["gameTweaks"]["modMineralPriceAdjust"] != 1:
-		for m in extendedMineralPrices:
-			extendedMineralPrices[m] *= Settings.ZKYConfig["gameTweaks"]["modMineralPriceAdjust"]
-
-# Adjust the prices of vanilla minerals before we merge them with the modded ones
-	if Settings.ZKYConfig["gameTweaks"]["vanillaMineralPriceAdjust"] != 1:
-		for m in mineralPrices:
-			mineralPrices[m] *= Settings.ZKYConfig["gameTweaks"]["vanillaMineralPriceAdjust"]
+	add_to_group("ZKYSettings")
+	updateSettings()
 
 # Merge the modded minerals with the vanilla ones
 	if Settings.ZKYConfig["additions"]["addMinerals"]:
-		mineralPrices.merge(extendedMineralPrices)
-		specificMineralColors.merge(extendedMineralColors)
-		traceMinerals.append_array(extendedTraceMinerals)
+		mineralPrices.merge(ZKYMineralPrices)
+		specificMineralColors.merge(ZKYMineralColors)
+		traceMinerals.append_array(ZKYTraceMinerals)
 
 # Add the new transponder formats
 	if Settings.ZKYConfig["additions"]["addTransponders"]:
-		transponderFormats.append_array(extendedTransponderFormats)
+		transponderFormats.append_array(ZKYTransponderFormats)
 
 # Add ships to the used ship pool
 	if Settings.ZKYConfig["additions"]["addShips"]:
-		usedShipsPool.append_array(extendedUsedShipsPool)
+		usedShipsPool.append_array(ZKYUsedShipsPool)
 
 # Add the ATK222222225 to the used ships pool
 	if Settings.ZKYConfig["sillyStuff"]["addATK222222225"]:
@@ -133,3 +121,23 @@ func _ready():
 #	ships.append(createShipInstanceWithCache("TRTL-STEALTH", 24 * 3600 * 7, week + 4, true))
 #	ships.append_array(.getShipsAvailableForSale())
 #	return ships
+
+
+
+onready var baseNormalXpGain = normalXpGain
+onready var baseMentorXpGain = mentorXpGain
+
+onready var baseMineralPrices = mineralPrices.duplicate()
+
+func updateSettings():
+	# Adjust crew XP gains
+	normalXpGain = baseNormalXpGain * Settings.ZKYConfig["gameTweaks"]["xpAdjust"]
+	mentorXpGain = baseMentorXpGain * Settings.ZKYConfig["gameTweaks"]["xpAdjust"]
+
+# Adjust the prices of modded minerals before we merge them with the vanilla ones
+	for m in ZKYMineralPrices:
+		mineralPrices[m] = ZKYMineralPrices[m] * Settings.ZKYConfig["gameTweaks"]["modMineralPriceAdjust"]
+
+# Adjust the prices of vanilla minerals before we merge them with the modded ones
+	for m in baseMineralPrices:
+		mineralPrices[m] = baseMineralPrices[m] * Settings.ZKYConfig["gameTweaks"]["vanillaMineralPriceAdjust"]
