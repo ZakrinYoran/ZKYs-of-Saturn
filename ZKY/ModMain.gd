@@ -33,8 +33,9 @@ func _init(modLoader = ModLoader):
 	if modConfig["modSettings"]["updateVersion"]:
 		installScriptExtension("VersionLabel.gd")
 
-	installScriptExtension("menu/SettingsLayer.gd")
-	replaceScene("menu/SettingsLayer.tscn")
+	if modConfig["modSettings"]["settingsMenu"]:
+		installScriptExtension("menu/SettingsLayer.gd")
+		replaceScene("menu/SettingsLayer.tscn")
 
 	installScriptExtension("CurrentGame.gd")
 	installScriptExtension("TheRing.gd")
@@ -60,6 +61,8 @@ func _init(modLoader = ModLoader):
 
 # Loads ship .tscn files which binds anything related, not giving us a chance to replace them.
 	installScriptExtension("ships/Shipyard.gd")
+
+	replaceScene("Game.tscn")
 
 	if modConfig["modSettings"]["loadTL"]:
 		updateTL() #Load custom translations

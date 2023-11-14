@@ -19,10 +19,11 @@ func _ready():
 #	if isPlayerControlled():
 #		autopilotComfortEnabled = false
 
+
 # Update all the variables that can be changed by settings
 func updateSettings():
 	cargoBehavior = Settings.ZKYConfig["cargoTweaks"]["processedBehavior"]
-	maxCargoTypes = Settings.ZKYConfig["cargoTweaks"]["processedTypes"]
+	maxCargoTypes = int(Settings.ZKYConfig["cargoTweaks"]["processedTypes"])
 
 	if Settings.ZKYConfig["additions"]["addMinerals"]:
 		extendedMineralCount = float(CurrentGame.traceMinerals.size())
@@ -148,6 +149,23 @@ func emptyUnprocessedCargo():
 	shipConfig.currentCargo.clear()
 	shipConfig.currentCargoBy.clear()
 	configMutex.unlock()
+
+
+# Functions to disable/reenable collisions on a ship
+var defaultCollisions = {}
+func disableCollisionsOn(obj):
+	if "collision_layer" in obj:
+		defaultCollisions[obj] = {
+			"mask" : obj.collision_mask,
+			"layer" : obj.collision_layer
+		}
+	.disableCollisionsOn(obj)
+
+
+func enableCollisions():
+	for obj in defaultCollisions:
+		obj.collision_mask = defaultCollisions[obj]["mask"]
+		obj.collision_layer = defaultCollisions[obj]["layer"]
 
 
 # Functions to invert autopilot heading.

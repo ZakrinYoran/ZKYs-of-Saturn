@@ -1,7 +1,7 @@
 extends "res://Settings.gd"
 
 # Mod version
-const ZKY_VERSION = "0.3.0"
+const ZKY_VERSION = "0.4.0"
 
 # Default config values
 var ZKYConfig = {
@@ -9,9 +9,11 @@ var ZKYConfig = {
 		"loadDLC":true,
 		"loadTL":true,
 		"updateVersion":true,
+		"settingsMenu":true,
 	}, 
 	"modTesting":{
 		"testEvent":false,
+		"toolWindow":false,
 	},
 	"gameTweaks":{
 		"menuStopsAstro":true,
@@ -61,6 +63,7 @@ var ZKYConfig = {
 #		"mood_western_alternate":"",
 #	},
 }
+
 
 var ZKYPath = "user://ZKYsettings.cfg"
 var ZKYFile = ConfigFile.new()

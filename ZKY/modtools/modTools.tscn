@@ -1,0 +1,200 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://menu/MenuTheme.tres" type="Theme" id=1]
+[ext_resource path="res://ZKY/modtools/modTools.gd" type="Script" id=2]
+[ext_resource path="res://ZKY/modtools/shipCutscene.gd" type="Script" id=3]
+[ext_resource path="res://ZKY/modtools/ShipRepair.gd" type="Script" id=4]
+[ext_resource path="res://ZKY/modtools/ShipResupply.gd" type="Script" id=5]
+[ext_resource path="res://ZKY/modtools/EventSelect.gd" type="Script" id=6]
+[ext_resource path="res://ZKY/modtools/shipImmortal.gd" type="Script" id=7]
+[ext_resource path="res://ZKY/modtools/shipIntangible.gd" type="Script" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="modTools" type="PanelContainer"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 1733.0
+margin_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="ZKYStuff" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 2.0
+margin_right = 1653.0
+margin_bottom = 274.0
+size_flags_vertical = 3
+
+[node name="titleBar" type="HBoxContainer" parent="ZKYStuff"]
+margin_right = 1637.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+
+[node name="moveWindow" type="Button" parent="ZKYStuff/titleBar"]
+margin_right = 1501.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 64, 0 )
+focus_mode = 0
+size_flags_horizontal = 3
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+action_mode = 0
+flat = true
+
+[node name="minimizeWindow" type="Button" parent="ZKYStuff/titleBar"]
+margin_left = 1505.0
+margin_right = 1569.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 64, 0 )
+focus_mode = 0
+text = "-"
+
+[node name="closeWindow" type="Button" parent="ZKYStuff/titleBar"]
+margin_left = 1573.0
+margin_right = 1637.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 64, 42 )
+focus_mode = 0
+text = "X"
+
+[node name="stuff" type="VBoxContainer" parent="ZKYStuff"]
+margin_top = 46.0
+margin_right = 1637.0
+margin_bottom = 272.0
+size_flags_vertical = 3
+
+[node name="ShipResupply" type="GridContainer" parent="ZKYStuff/stuff"]
+margin_right = 1637.0
+margin_bottom = 86.0
+columns = 2
+
+[node name="ShipRepair" type="Button" parent="ZKYStuff/stuff/ShipResupply"]
+margin_right = 817.0
+margin_bottom = 41.0
+focus_mode = 0
+size_flags_horizontal = 3
+text = "SETTINGS_SHIP_REPAIR"
+script = ExtResource( 4 )
+
+[node name="ShipRefuel" type="Button" parent="ZKYStuff/stuff/ShipResupply"]
+margin_left = 821.0
+margin_right = 1637.0
+margin_bottom = 41.0
+focus_mode = 0
+size_flags_horizontal = 3
+text = "SETTINGS_SHIP_REFUEL"
+script = ExtResource( 5 )
+type = "reactiveMass"
+
+[node name="ShipRearm" type="Button" parent="ZKYStuff/stuff/ShipResupply"]
+margin_top = 45.0
+margin_right = 817.0
+margin_bottom = 86.0
+focus_mode = 0
+size_flags_horizontal = 3
+text = "SETTINGS_SHIP_REARM"
+script = ExtResource( 5 )
+type = "massDriverAmmo"
+
+[node name="ShipRedrone" type="Button" parent="ZKYStuff/stuff/ShipResupply"]
+margin_left = 821.0
+margin_top = 45.0
+margin_right = 1637.0
+margin_bottom = 86.0
+focus_mode = 0
+size_flags_horizontal = 3
+text = "SETTINGS_SHIP_REDRONE"
+script = ExtResource( 5 )
+type = "droneParts"
+
+[node name="GridContainer" type="GridContainer" parent="ZKYStuff/stuff"]
+margin_top = 90.0
+margin_right = 1637.0
+margin_bottom = 131.0
+columns = 3
+
+[node name="ShipImmortal" type="CheckButton" parent="ZKYStuff/stuff/GridContainer"]
+margin_right = 536.0
+margin_bottom = 41.0
+focus_mode = 0
+size_flags_horizontal = 3
+text = "SETTINGS_SHIP_IMMORTAL"
+align = 1
+script = ExtResource( 7 )
+
+[node name="ShipIntangible" type="CheckButton" parent="ZKYStuff/stuff/GridContainer"]
+margin_left = 540.0
+margin_right = 1097.0
+margin_bottom = 41.0
+focus_mode = 0
+size_flags_horizontal = 3
+text = "SETTINGS_SHIP_INTANGIBLE"
+align = 1
+script = ExtResource( 8 )
+
+[node name="ShipCutscene" type="CheckButton" parent="ZKYStuff/stuff/GridContainer"]
+margin_left = 1101.0
+margin_right = 1637.0
+margin_bottom = 41.0
+focus_mode = 0
+size_flags_horizontal = 3
+text = "SETTINGS_SHIP_CUTSCENE"
+align = 1
+script = ExtResource( 3 )
+
+[node name="EventSpawner" type="GridContainer" parent="ZKYStuff/stuff"]
+margin_top = 135.0
+margin_right = 1637.0
+margin_bottom = 176.0
+columns = 2
+
+[node name="EventSelect" type="OptionButton" parent="ZKYStuff/stuff/EventSpawner"]
+margin_right = 1147.0
+margin_bottom = 41.0
+focus_mode = 0
+size_flags_horizontal = 3
+align = 1
+script = ExtResource( 6 )
+
+[node name="EventSpawn" type="Button" parent="ZKYStuff/stuff/EventSpawner"]
+margin_left = 1151.0
+margin_right = 1637.0
+margin_bottom = 41.0
+focus_mode = 0
+text = "SETTINGS_EVENT_SPAWN"
+
+[node name="MarginContainer" type="MarginContainer" parent="ZKYStuff/stuff"]
+margin_top = 180.0
+margin_right = 1637.0
+margin_bottom = 180.0
+size_flags_vertical = 3
+
+[node name="bottomBar" type="HBoxContainer" parent="ZKYStuff/stuff"]
+margin_top = 184.0
+margin_right = 1637.0
+margin_bottom = 226.0
+
+[node name="MarginContainer" type="MarginContainer" parent="ZKYStuff/stuff/bottomBar"]
+margin_right = 1569.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+
+[node name="resizeWindow" type="Button" parent="ZKYStuff/stuff/bottomBar"]
+margin_left = 1573.0
+margin_right = 1637.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 64, 42 )
+focus_mode = 0
+text = " "
+
+[connection signal="pressed" from="ZKYStuff/titleBar/moveWindow" to="." method="_on_moveWindow_pressed"]
+[connection signal="pressed" from="ZKYStuff/titleBar/minimizeWindow" to="." method="_on_minimizeWindow_pressed"]
+[connection signal="pressed" from="ZKYStuff/titleBar/closeWindow" to="." method="_on_closeWindow_pressed"]
+[connection signal="pressed" from="ZKYStuff/stuff/EventSpawner/EventSpawn" to="ZKYStuff/stuff/EventSpawner/EventSelect" method="_on_EventSpawn_pressed"]
+[connection signal="pressed" from="ZKYStuff/stuff/bottomBar/resizeWindow" to="." method="_on_resizeWindow_pressed"]

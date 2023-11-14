@@ -1,14 +1,39 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://menu/SettingsLayer.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ZKY/menu/NumericSetting.gd" type="Script" id=2]
-[ext_resource path="res://ZKY/menu/BoolSetting.gd" type="Script" id=3]
+[ext_resource path="res://ZKY/menu/SettingNumeric.gd" type="Script" id=2]
+[ext_resource path="res://ZKY/menu/SettingBool.gd" type="Script" id=3]
+[ext_resource path="res://ZKY/menu/SettingOption.gd" type="Script" id=4]
+[ext_resource path="res://ZKY/menu/OpenGithub.gd" type="Script" id=5]
 
 [node name="SettingsPopup" instance=ExtResource( 1 )]
 visible = true
 
 [node name="MENU_SETTINGS" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl" index="0"]
 visible = false
+
+[node name="Difficulty" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/MENU_SETTINGS/MarginContainer/VBoxContainer" index="1"]
+visible = false
+
+[node name="GridContainer2" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/MENU_SETTINGS/MarginContainer/VBoxContainer" index="2"]
+margin_top = 47.0
+margin_bottom = 133.0
+
+[node name="GridContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/MENU_SETTINGS/MarginContainer/VBoxContainer" index="3"]
+margin_top = 139.0
+margin_bottom = 393.0
+
+[node name="SteamingMode" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/MENU_SETTINGS/MarginContainer/VBoxContainer" index="4"]
+margin_top = 399.0
+margin_bottom = 440.0
+
+[node name="CaptureMouse" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/MENU_SETTINGS/MarginContainer/VBoxContainer" index="5"]
+margin_top = 446.0
+margin_bottom = 487.0
+
+[node name="ConverveMem" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/MENU_SETTINGS/MarginContainer/VBoxContainer" index="6"]
+margin_top = 493.0
+margin_bottom = 534.0
 
 [node name="ZKY_SETTINGS" type="Tabs" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl" index="4"]
 anchor_right = 1.0
@@ -21,37 +46,67 @@ margin_bottom = -1.0
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS" index="0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
 custom_constants/margin_right = 0
 custom_constants/margin_top = 16
 custom_constants/margin_left = 0
 custom_constants/margin_bottom = 48
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer" index="0"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer" index="0"]
 margin_top = 16.0
-margin_right = 1379.0
+margin_right = 1387.0
 margin_bottom = 617.0
+size_flags_horizontal = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer" index="0"]
+margin_top = 16.0
+margin_right = 1367.0
+margin_bottom = 829.0
+size_flags_horizontal = 3
 custom_constants/separation = 6
 
-[node name="VelocitySettings" type="HBoxContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer" index="0"]
-margin_right = 1379.0
-margin_bottom = 49.0
-size_flags_horizontal = 3
-alignment = 1
+[node name="openGit" type="Button" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer" index="0"]
+margin_right = 1367.0
+margin_bottom = 41.0
+text = "SETTINGS_OPEN_GITHUB"
+script = ExtResource( 5 )
 
-[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/VelocitySettings" index="0"]
-margin_bottom = 49.0
-size_flags_horizontal = 3
+[node name="toolWindow" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer" index="1"]
+margin_top = 47.0
+margin_right = 1367.0
+margin_bottom = 88.0
+text = "SETTINGS_TOOL_WINDOW"
+align = 1
+script = ExtResource( 3 )
+type = "modTesting"
+setting = "toolWindow"
 
-[node name="LabelEscapeVelocity" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/VelocitySettings" index="1"]
-margin_left = 4.0
+[node name="LabelSettingsGeneral" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer" index="2"]
+margin_top = 94.0
+margin_right = 1367.0
+margin_bottom = 133.0
+text = "SETTINGS_LABEL_GENERAL"
+align = 1
+valign = 1
+
+[node name="SettingsNum" type="GridContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer" index="3"]
+margin_top = 139.0
+margin_right = 1367.0
+margin_bottom = 347.0
+size_flags_horizontal = 3
+columns = 4
+
+[node name="LabelEscapeVelocity" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="0"]
 margin_top = 5.0
-margin_right = 524.0
+margin_right = 520.0
 margin_bottom = 44.0
+size_flags_horizontal = 3
 text = "SETTINGS_ESCAPE_VELOCITY"
 
-[node name="ValueEscapeVelocity" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/VelocitySettings" index="2"]
-margin_left = 528.0
-margin_right = 674.0
+[node name="ValueEscapeVelocity" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="1"]
+margin_left = 524.0
+margin_right = 670.0
 margin_bottom = 49.0
 max_value = 0.0
 step = 10.0
@@ -60,22 +115,18 @@ script = ExtResource( 2 )
 type = "gameTweaks"
 setting = "escapeVelocity"
 
-[node name="MarginContainer3" type="MarginContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/VelocitySettings" index="3"]
-margin_left = 678.0
-margin_right = 678.0
-margin_bottom = 49.0
-size_flags_horizontal = 3
-
-[node name="LabelWarningVelocity" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/VelocitySettings" index="4"]
-margin_left = 682.0
+[node name="LabelWarningVelocity" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="2"]
+margin_left = 674.0
 margin_top = 5.0
-margin_right = 1225.0
+margin_right = 1217.0
 margin_bottom = 44.0
+size_flags_horizontal = 3
 text = "SETTINGS_WARNING_VELOCITY"
+align = 2
 
-[node name="ValueWarningVelocity" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/VelocitySettings" index="5"]
-margin_left = 1229.0
-margin_right = 1375.0
+[node name="ValueWarningVelocity" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="3"]
+margin_left = 1221.0
+margin_right = 1367.0
 margin_bottom = 49.0
 max_value = 0.0
 step = 10.0
@@ -84,34 +135,18 @@ script = ExtResource( 2 )
 type = "gameTweaks"
 setting = "warningVelocity"
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/VelocitySettings" index="6"]
-margin_left = 1379.0
-margin_right = 1379.0
-margin_bottom = 49.0
+[node name="LabelOddityAdjust" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="4"]
+margin_top = 58.0
+margin_right = 520.0
+margin_bottom = 97.0
 size_flags_horizontal = 3
-
-[node name="EventSettings" type="HBoxContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer" index="1"]
-margin_top = 55.0
-margin_right = 1379.0
-margin_bottom = 104.0
-alignment = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/EventSettings" index="0"]
-margin_right = 32.0
-margin_bottom = 49.0
-size_flags_horizontal = 3
-
-[node name="LabelOddityAdjust" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/EventSettings" index="1"]
-margin_left = 36.0
-margin_top = 5.0
-margin_right = 518.0
-margin_bottom = 44.0
 text = "SETTINGS_ODDITY_ADJUST"
 
-[node name="ValueOddityAdjust" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/EventSettings" index="2"]
-margin_left = 522.0
-margin_right = 668.0
-margin_bottom = 49.0
+[node name="ValueOddityAdjust" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="5"]
+margin_left = 524.0
+margin_top = 53.0
+margin_right = 670.0
+margin_bottom = 102.0
 max_value = 0.0
 step = 0.1
 allow_greater = true
@@ -119,23 +154,20 @@ script = ExtResource( 2 )
 type = "eventTweaks"
 setting = "oddityAdjust"
 
-[node name="MarginContainer3" type="MarginContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/EventSettings" index="3"]
-margin_left = 672.0
-margin_right = 704.0
-margin_bottom = 49.0
+[node name="LabelDiggerAdjust" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="6"]
+margin_left = 674.0
+margin_top = 58.0
+margin_right = 1217.0
+margin_bottom = 97.0
 size_flags_horizontal = 3
-
-[node name="LabelDiggerAdjust" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/EventSettings" index="4"]
-margin_left = 708.0
-margin_top = 5.0
-margin_right = 1192.0
-margin_bottom = 44.0
 text = "SETTINGS_DIGGER_ADJUST"
+align = 2
 
-[node name="ValueDiggerAdjust" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/EventSettings" index="5"]
-margin_left = 1196.0
-margin_right = 1342.0
-margin_bottom = 49.0
+[node name="ValueDiggerAdjust" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="7"]
+margin_left = 1221.0
+margin_top = 53.0
+margin_right = 1367.0
+margin_bottom = 102.0
 max_value = 0.0
 step = 0.1
 allow_greater = true
@@ -143,34 +175,18 @@ script = ExtResource( 2 )
 type = "eventTweaks"
 setting = "diggerAdjust"
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/EventSettings" index="6"]
-margin_left = 1346.0
-margin_right = 1379.0
-margin_bottom = 49.0
+[node name="LabelVanillaPrice" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="8"]
+margin_top = 111.0
+margin_right = 520.0
+margin_bottom = 150.0
 size_flags_horizontal = 3
-
-[node name="PriceSettings" type="HBoxContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer" index="2"]
-margin_top = 110.0
-margin_right = 1379.0
-margin_bottom = 159.0
-alignment = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/PriceSettings" index="0"]
-margin_right = 44.0
-margin_bottom = 49.0
-size_flags_horizontal = 3
-
-[node name="LabelVanillaPrice" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/PriceSettings" index="1"]
-margin_left = 48.0
-margin_top = 5.0
-margin_right = 511.0
-margin_bottom = 44.0
 text = "SETTINGS_VANILLA_PRICE"
 
-[node name="ValueVanillaPrice" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/PriceSettings" index="2"]
-margin_left = 515.0
-margin_right = 661.0
-margin_bottom = 49.0
+[node name="ValueVanillaPrice" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="9"]
+margin_left = 524.0
+margin_top = 106.0
+margin_right = 670.0
+margin_bottom = 155.0
 max_value = 0.0
 step = 0.1
 allow_greater = true
@@ -178,23 +194,20 @@ script = ExtResource( 2 )
 type = "gameTweaks"
 setting = "vanillaMineralPriceAdjust"
 
-[node name="MarginContainer3" type="MarginContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/PriceSettings" index="3"]
-margin_left = 665.0
-margin_right = 710.0
-margin_bottom = 49.0
+[node name="LabelModdedPrice" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="10"]
+margin_left = 674.0
+margin_top = 111.0
+margin_right = 1217.0
+margin_bottom = 150.0
 size_flags_horizontal = 3
-
-[node name="LabelModdedPrice" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/PriceSettings" index="4"]
-margin_left = 714.0
-margin_top = 5.0
-margin_right = 1180.0
-margin_bottom = 44.0
 text = "SETTINGS_MODDED_PRICE"
+align = 2
 
-[node name="ValueModdedPrice" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/PriceSettings" index="5"]
-margin_left = 1184.0
-margin_right = 1330.0
-margin_bottom = 49.0
+[node name="ValueModdedPrice" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="11"]
+margin_left = 1221.0
+margin_top = 106.0
+margin_right = 1367.0
+margin_bottom = 155.0
 max_value = 0.0
 step = 0.1
 allow_greater = true
@@ -202,29 +215,18 @@ script = ExtResource( 2 )
 type = "gameTweaks"
 setting = "modMineralPriceAdjust"
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/PriceSettings" index="6"]
-margin_left = 1334.0
-margin_right = 1379.0
-margin_bottom = 49.0
+[node name="LabelXPAdjust" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="12"]
+margin_top = 164.0
+margin_right = 520.0
+margin_bottom = 203.0
 size_flags_horizontal = 3
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer" index="3"]
-margin_top = 165.0
-margin_right = 1379.0
-margin_bottom = 214.0
-alignment = 1
-
-[node name="LabelXPAdjust" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/HBoxContainer2" index="0"]
-margin_left = 414.0
-margin_top = 5.0
-margin_right = 815.0
-margin_bottom = 44.0
 text = "SETTINGS_XP_ADJUST"
 
-[node name="ValueXPAdjust" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
-margin_left = 819.0
-margin_right = 965.0
-margin_bottom = 49.0
+[node name="ValueXPAdjust" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsNum" index="13"]
+margin_left = 524.0
+margin_top = 159.0
+margin_right = 670.0
+margin_bottom = 208.0
 max_value = 0.0
 step = 0.1
 allow_greater = true
@@ -233,29 +235,228 @@ script = ExtResource( 2 )
 type = "gameTweaks"
 setting = "xpAdjust"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer" index="4"]
-margin_top = 220.0
-margin_right = 1379.0
-margin_bottom = 261.0
-alignment = 1
+[node name="SettingsBool" type="GridContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer" index="4"]
+margin_top = 353.0
+margin_right = 1367.0
+margin_bottom = 394.0
+columns = 2
 
-[node name="MapBoundries" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-margin_left = 95.0
-margin_right = 648.0
+[node name="MapBoundries" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsBool" index="0"]
+margin_right = 682.0
 margin_bottom = 41.0
+size_flags_horizontal = 3
 text = "SETTINGS_MAP_BOUNDRIES"
+align = 1
+icon_align = 1
 script = ExtResource( 3 )
 type = "gameTweaks"
 setting = "mapBoundries"
 
-[node name="MenuStopsAstro" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
-margin_left = 652.0
-margin_right = 1284.0
+[node name="MenuStopsAstro" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsBool" index="1"]
+margin_left = 686.0
+margin_right = 1367.0
 margin_bottom = 41.0
+size_flags_horizontal = 3
 text = "SETTINGS_MENU_STOPS_ASTRO"
+align = 1
+icon_align = 1
 script = ExtResource( 3 )
 type = "gameTweaks"
 setting = "menuStopsAstro"
+
+[node name="LabelSettingsCargo" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer" index="5"]
+margin_top = 400.0
+margin_right = 1367.0
+margin_bottom = 439.0
+text = "SETTINGS_LABEL_CARGO"
+align = 1
+valign = 1
+
+[node name="SettingsCargo" type="GridContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer" index="6"]
+margin_top = 445.0
+margin_right = 1367.0
+margin_bottom = 539.0
+columns = 2
+
+[node name="DumpProcessed" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsCargo" index="0"]
+margin_right = 673.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+text = "SETTINGS_DUMP_PROCESSED"
+align = 1
+icon_align = 1
+script = ExtResource( 3 )
+type = "cargoTweaks"
+setting = "canDumpProcessed"
+
+[node name="KeepProcessed" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsCargo" index="1"]
+margin_left = 677.0
+margin_right = 1367.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+text = "SETTINGS_KEEP_PROCESSED"
+align = 1
+icon_align = 1
+script = ExtResource( 3 )
+type = "cargoTweaks"
+setting = "canKeepProcessed"
+
+[node name="ProcessedBehavior" type="OptionButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsCargo" index="2"]
+margin_top = 45.0
+margin_right = 673.0
+margin_bottom = 94.0
+align = 1
+script = ExtResource( 4 )
+type = "cargoTweaks"
+setting = "processedBehavior"
+modes = {
+"default": "SETTINGS_CARGO_DEFAULT",
+"dynamic": "SETTINGS_CARGO_DYNAMIC",
+"limited": "SETTINGS_CARGO_LIMITED",
+"reduced": "SETTINGS_CARGO_REDUCED"
+}
+
+[node name="ProcessedTypes" type="HBoxContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsCargo" index="3"]
+margin_left = 677.0
+margin_top = 45.0
+margin_right = 1367.0
+margin_bottom = 94.0
+
+[node name="LabelProcessedTypes" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsCargo/ProcessedTypes" index="0"]
+margin_top = 5.0
+margin_right = 540.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "SETTINGS_PROCESSED_TYPES"
+
+[node name="ValueProcessedTypes" type="SpinBox" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsCargo/ProcessedTypes" index="1"]
+margin_left = 544.0
+margin_right = 690.0
+margin_bottom = 49.0
+max_value = 0.0
+rounded = true
+allow_greater = true
+script = ExtResource( 2 )
+type = "cargoTweaks"
+setting = "processedTypes"
+
+[node name="LabelSettingsAdvanced" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer" index="7"]
+margin_top = 545.0
+margin_right = 1367.0
+margin_bottom = 584.0
+text = "SETTINGS_LABEL_ADD"
+align = 1
+valign = 1
+
+[node name="SettingsAdditions" type="GridContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer" index="8"]
+margin_top = 590.0
+margin_right = 1367.0
+margin_bottom = 721.0
+columns = 2
+
+[node name="AddTransponders" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="0"]
+margin_right = 682.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+text = "SETTINGS_ADD_TRANSPONDERS"
+align = 1
+icon_align = 1
+script = ExtResource( 3 )
+requiresRestart = true
+type = "additions"
+setting = "addTransponders"
+
+[node name="AddMinerals" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="1"]
+margin_left = 686.0
+margin_right = 1367.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+text = "SETTINGS_ADD_MINERALS"
+align = 1
+icon_align = 1
+script = ExtResource( 3 )
+requiresRestart = true
+type = "additions"
+setting = "addMinerals"
+
+[node name="AddShips" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="2"]
+margin_top = 45.0
+margin_right = 682.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+text = "SETTINGS_ADD_SHIPS"
+align = 1
+icon_align = 1
+script = ExtResource( 3 )
+requiresRestart = true
+type = "additions"
+setting = "addShips"
+
+[node name="AddEquipment" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="3"]
+margin_left = 686.0
+margin_top = 45.0
+margin_right = 1367.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+text = "SETTINGS_ADD_EQUIPMENT"
+align = 1
+icon_align = 1
+script = ExtResource( 3 )
+requiresRestart = true
+type = "additions"
+setting = "addEquipment"
+
+[node name="AddEvents" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="4"]
+margin_top = 90.0
+margin_right = 682.0
+margin_bottom = 131.0
+size_flags_horizontal = 3
+text = "SETTINGS_ADD_EVENTS"
+align = 1
+icon_align = 1
+script = ExtResource( 3 )
+requiresRestart = true
+type = "additions"
+setting = "addEvents"
+
+[node name="LabelSettingsSilly" type="Label" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer" index="9"]
+margin_top = 727.0
+margin_right = 1367.0
+margin_bottom = 766.0
+text = "SETTINGS_LABEL_SILLY"
+align = 1
+valign = 1
+
+[node name="SettingsSilly" type="GridContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer" index="10"]
+margin_top = 772.0
+margin_right = 1367.0
+margin_bottom = 813.0
+columns = 2
+
+[node name="AddATK222222225" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsSilly" index="0"]
+margin_right = 682.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+text = "SETTINGS_ADD_ATK222222225"
+align = 1
+icon_align = 1
+script = ExtResource( 3 )
+requiresRestart = true
+type = "sillyStuff"
+setting = "addATK222222225"
+
+[node name="AddATK225-HH" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsSilly" index="1"]
+margin_left = 686.0
+margin_right = 1367.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+text = "SETTINGS_ADD_ATK225-HH"
+align = 1
+icon_align = 1
+script = ExtResource( 3 )
+requiresRestart = true
+type = "sillyStuff"
+setting = "addATK225-HH"
 
 [node name="Control" type="Control" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS" index="1"]
 anchor_top = 1.0
@@ -271,9 +472,6 @@ margin_right = 341.0
 margin_bottom = -11.0
 focus_neighbour_right = NodePath("../Cancel")
 text = "SETTINGS_SAVE"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Cancel" type="Button" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/Control" index="1"]
 anchor_left = 1.0
