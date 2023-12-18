@@ -164,21 +164,15 @@ func replaceScene(path:String, oldPath:String = "none"):
 
 
 # Helper function to extend scripts
-func installScriptExtension(path:String , oldPath:String = "none"):
-	var childPath
-	var parentPath
+func installScriptExtension(path:String):
+	var childPath = str("res://ZKY/" + path)
+	var childScript = ResourceLoader.load(childPath)
 
-	if oldPath == "none":
-		childPath = str("res://ZKY/" + path)
-		parentPath = str("res://" + path)
+	childScript.new()
 
-	else:
-		childPath = path
-		parentPath = oldPath
+	var parentScript = childScript.get_base_script()
+	var parentPath = parentScript.resource_path
 
 	Debug.l("Installing script extension: %s <- %s" % [parentPath, childPath])
 
-	var childScript = load(childPath)
-	childScript.new()
 	childScript.take_over_path(parentPath)
-   

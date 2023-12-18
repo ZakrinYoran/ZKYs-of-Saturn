@@ -1,7 +1,8 @@
 extends "res://ships/ship-ctrl.gd"
 
 
-var baseMineralCount = 6.0
+const baseMineralCount = 6.0
+
 var extendedMineralCount = 6.0
 var cargoCapacityModifier = 1.0
 
@@ -64,73 +65,56 @@ func isInEscapeCondition():
 
 # Get a ship's total processed cargo capacity
 func getTotalProcessedCargoCapacity()->float:
-	match processedCargoStorageType:
-		"divided":
-			match cargoBehavior:
-				"default":
-					return processedCargoCapacity * extendedMineralCount
-				"reduced", "limited", "dynamic":
-					return processedCargoCapacity * baseMineralCount
-		"amorphic":
-			return processedCargoCapacity
-		"mono":
-			return processedCargoCapacity
-	return 0.0
+	if processedCargoStorageType == "divided":
+		match cargoBehavior:
+			"default":
+				return processedCargoCapacity * extendedMineralCount
+			"reduced", "limited", "dynamic":
+				return processedCargoCapacity * baseMineralCount
+			_:
+				return 0.0
+	else:
+		return .getTotalProcessedCargoCapacity()
 
 
 # Get a ship's processed cargo capacity for a single mineral
 func getProcessedCargoCapacity(mineral:String)->float:
 	removeSchrodingersIron()
-	match processedCargoStorageType:
-		"divided":
-			match cargoBehavior:
+	if processedCargoStorageType == "divided":
+		match cargoBehavior:
 
-				"default":
-					return processedCargoCapacity
+			"default":
+				return .getProcessedCargoCapacity(mineral)
 
-				"reduced":
-					return (processedCargoCapacity * cargoCapacityModifier)
+			"reduced":
+				return (processedCargoCapacity * cargoCapacityModifier)
 
-				"limited":
-					var types = getProcessedCargoTypes()
-					if types.size() > maxCargoTypes:
-						return 0.0
-					if types.size() == maxCargoTypes:
-						if mineral in types:
-							return processedCargoCapacity
-						else:
-							return 0.0
-					return processedCargoCapacity
-
-				"dynamic":
-					var baysFree = maxCargoTypes
-
-					for m in shipConfig.processedCargo:
-						baysFree -= ceil(shipConfig.processedCargo[m] / processedCargoCapacity)
-
-					if mineral in shipConfig.processedCargo:
-						var currentBays = ceil(shipConfig.processedCargo[mineral] / processedCargoCapacity)
-						return float((currentBays + baysFree) * processedCargoCapacity)
+			"limited":
+				var types = getProcessedCargoTypes()
+				if types.size() > maxCargoTypes:
+					return 0.0
+				if types.size() == maxCargoTypes:
+					if mineral in types:
+						return processedCargoCapacity
 					else:
-						return float(baysFree * processedCargoCapacity)
-				_:
-					return 0.0
+						return 0.0
+				return processedCargoCapacity
 
-		"amorphic":
-			return max(0, processedCargoCapacity - getProcessedCargoMass() + getProcessedCargo(mineral))
+			"dynamic":
+				var baysFree = maxCargoTypes
 
-		"mono":
-			var types = getProcessedCargoTypes()
-			if types.size() > 1:
-				return 0.0
-			if types.size() == 1:
-				if mineral == types[0]:
-					return processedCargoCapacity
+				for m in shipConfig.processedCargo:
+					baysFree -= ceil(shipConfig.processedCargo[m] / processedCargoCapacity)
+
+				if mineral in shipConfig.processedCargo:
+					var currentBays = ceil(shipConfig.processedCargo[mineral] / processedCargoCapacity)
+					return float((currentBays + baysFree) * processedCargoCapacity)
 				else:
-					return 0.0
-			return processedCargoCapacity
-		_:
-			return 0.0
+					return float(baysFree * processedCargoCapacity)
+			_:
+				return 0.0
+	else:
+		return .getProcessedCargoCapacity(mineral)
 
 
 # Remove any processed cargo listings if it has 0 or less of that mineral.
