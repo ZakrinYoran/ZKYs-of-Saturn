@@ -35,6 +35,9 @@ margin_bottom = 487.0
 margin_top = 493.0
 margin_bottom = 534.0
 
+[node name="VBoxContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/SETTINGS_GRAPHICS/MarginContainer" index="0"]
+margin_right = 1182.0
+
 [node name="ZKY_SETTINGS" type="Tabs" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl" index="4"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -366,10 +369,23 @@ requiresRestart = true
 type = "additions"
 setting = "addTransponders"
 
-[node name="AddMinerals" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="1"]
+[node name="AddCrewNames" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="1"]
 margin_left = 686.0
 margin_right = 1367.0
 margin_bottom = 41.0
+size_flags_horizontal = 3
+text = "SETTINGS_ADD_CREW"
+align = 1
+icon_align = 1
+script = ExtResource( 3 )
+requiresRestart = true
+type = "additions"
+setting = "addCrewNames"
+
+[node name="AddMinerals" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="2"]
+margin_top = 45.0
+margin_right = 682.0
+margin_bottom = 86.0
 size_flags_horizontal = 3
 text = "SETTINGS_ADD_MINERALS"
 align = 1
@@ -379,9 +395,10 @@ requiresRestart = true
 type = "additions"
 setting = "addMinerals"
 
-[node name="AddShips" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="2"]
+[node name="AddShips" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="3"]
+margin_left = 686.0
 margin_top = 45.0
-margin_right = 682.0
+margin_right = 1367.0
 margin_bottom = 86.0
 size_flags_horizontal = 3
 text = "SETTINGS_ADD_SHIPS"
@@ -392,11 +409,10 @@ requiresRestart = true
 type = "additions"
 setting = "addShips"
 
-[node name="AddEquipment" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="3"]
-margin_left = 686.0
-margin_top = 45.0
-margin_right = 1367.0
-margin_bottom = 86.0
+[node name="AddEquipment" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="4"]
+margin_top = 90.0
+margin_right = 682.0
+margin_bottom = 131.0
 size_flags_horizontal = 3
 text = "SETTINGS_ADD_EQUIPMENT"
 align = 1
@@ -406,9 +422,10 @@ requiresRestart = true
 type = "additions"
 setting = "addEquipment"
 
-[node name="AddEvents" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="4"]
+[node name="AddEvents" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsAdditions" index="5"]
+margin_left = 686.0
 margin_top = 90.0
-margin_right = 682.0
+margin_right = 1367.0
 margin_bottom = 131.0
 size_flags_horizontal = 3
 text = "SETTINGS_ADD_EVENTS"

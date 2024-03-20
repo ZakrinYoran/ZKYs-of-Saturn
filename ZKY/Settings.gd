@@ -1,7 +1,7 @@
 extends "res://Settings.gd"
 
 # Mod version
-const ZKY_VERSION = "0.5.0"
+const ZKY_VERSION = "0.6.0"
 
 # Default config values
 var ZKYConfig = {
@@ -26,6 +26,7 @@ var ZKYConfig = {
 	}, 
 	"additions":{
 		"addTransponders":true,
+		"addCrewNames":true,
 		"addMinerals":false,
 		"addShips":true,
 		"addEquipment":true,

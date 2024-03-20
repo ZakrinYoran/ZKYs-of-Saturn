@@ -71,6 +71,8 @@ func _init(modLoader = ModLoader):
 	if modConfig["modSettings"]["loadTL"]:
 		updateTL() #Load custom translations
 
+	updateNamer()
+
 	Debug.l("ZKY: Initialized")
 
 
@@ -84,6 +86,12 @@ func _ready():
 		replaceScene("enceladus/DiveSummary.tscn")
 
 	Debug.l("ZKY: Ready")
+
+
+# Add new crew names to the list
+func updateNamer():
+	installScriptExtension("namer/Namer.gd")
+
 
 
 # Things that add or modify events

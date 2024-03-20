@@ -46,6 +46,8 @@ When first launching the game, the mod will create a configuration file in your 
 Items/mechanics added by the mod, relevent settings indicated like this: (`settingName:parameterType`). Please be careful to only use the specified data types, or you may get unexpected behavior.
 
 - 1 New transponder format (`addTransponders:bool`).
+- New Crew Names (`addCrewNames:bool`).
+  - If you want to add your own, modify the file `ZKY/namer/crew.cs`.
 - 2 New ship variants in the dealership (`addShips:bool`).
   - `ATK225 "Atlas"`: A variant of the ATK225 that sacrifices the four rear docking bays for two high-stress mounts on the side, the required modifications also remove two of the RCS positions.
   - `OCP-209 (mono-refit)`: A variant of the OCP-209 with a single centrally mounted high-stress hardpoint, two additional drone/cargo mounts are on the back of the cargo bay.
