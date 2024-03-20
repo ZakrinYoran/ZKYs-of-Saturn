@@ -49,7 +49,7 @@ Items/mechanics added by the mod, relevent settings indicated like this: (`setti
 - 2 New ship variants in the dealership (`addShips:bool`).
   - `ATK225 "Atlas"`: A variant of the ATK225 that sacrifices the four rear docking bays for two high-stress mounts on the side, the required modifications also remove two of the RCS positions.
   - `OCP-209 (mono-refit)`: A variant of the OCP-209 with a single centrally mounted high-stress hardpoint, two additional drone/cargo mounts are on the back of the cargo bay.
-- (WIP) 6 New minerals to mine (`addMinerals:bool`).
+- 6 New minerals to mine (`addMinerals:bool`).
 - 4 New Obonto trades (`addMinerals:bool` and `addEvents:bool`) .
 - 4 Processed cargo hold behaviors (`processedBehavior:string`):  
   - `default`: Standard behavior, doubles effective cargo hold of non-combined ships.
@@ -77,3 +77,7 @@ Items/mechanics added by the mod, relevent settings indicated like this: (`setti
   
   - `ATK222222225`: A truly monsterous abomination, 50% longer then the  standard K225. This behemoth has 10 cargo bays, 14 RCS, and a custom HUD to show ship status. 
   - `ATK225 "Actiorione"`: This unholy creation can wield 4 High-Stress Hardpoints, sacrificing every other hardpoint to do so. You should totally equip 4 ARMs, that's a great idea !
+
+- 1 New event:
+  
+  - `NyanShip`: You may come across a strange flying cat during your travels, what manner of horrible monster is this

@@ -1,0 +1,272 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://ships/Lifepod.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ships/modules/ReactionWheel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ships/modules/AuxSlot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ships/metal_creak_01.wav" type="AudioStream" id=5]
+[ext_resource path="res://sfx/dv-plume.wav" type="AudioStream" id=6]
+[ext_resource path="res://hud/alert.wav" type="AudioStream" id=7]
+[ext_resource path="res://ships/metal_impact_01.wav" type="AudioStream" id=8]
+[ext_resource path="res://lights/distant-proxy.png" type="Texture" id=9]
+[ext_resource path="res://shader/ao-spec-difuse.shader" type="Shader" id=10]
+[ext_resource path="res://sfx/PitchAdjustedAudio.gd" type="Script" id=11]
+[ext_resource path="res://ships/modules/ShipCamera.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ships/CabinLight.gd" type="Script" id=14]
+[ext_resource path="res://ships/ship-ctrl.gd" type="Script" id=15]
+[ext_resource path="res://hud/Hud.tscn" type="PackedScene" id=16]
+[ext_resource path="res://ships/shipHull.phymat" type="PhysicsMaterial" id=17]
+[ext_resource path="res://ships/modules/Excavator.tscn" type="PackedScene" id=18]
+[ext_resource path="res://comms/conversation/UberConversation.tscn" type="PackedScene" id=19]
+[ext_resource path="res://ships/AI.tscn" type="PackedScene" id=20]
+[ext_resource path="res://debug/AIdebug.tscn" type="PackedScene" id=22]
+[ext_resource path="res://ships/Hull.gd" type="Script" id=23]
+[ext_resource path="res://ships/electric_arc.wav" type="AudioStream" id=24]
+[ext_resource path="res://ships/modules/TorchSlot.tscn" type="PackedScene" id=26]
+[ext_resource path="res://hud/collect.wav" type="AudioStream" id=30]
+
+[sub_resource type="CanvasItemMaterial" id=7]
+
+[sub_resource type="StreamTexture" id=9]
+flags = 4
+load_path = "res://ZKY/silly/NyanShip/ships/nyan.stex"
+
+[sub_resource type="CanvasItemMaterial" id=8]
+blend_mode = 1
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 10 )
+shader_param/maskScale = Vector2( 11, 1 )
+shader_param/frames = Vector2( 1, 1 )
+shader_param/paintJobFactor = 0.0
+shader_param/paintJobBrightAdjust = 16.0
+shader_param/maxval = 5.0
+shader_param/sparkBias = 0.0
+shader_param/scale = Vector2( 0.5, 1 )
+shader_param/sparkColor = Vector3( 50, 10, 100 )
+shader_param/coatColor = Plane( 0.02, 0.02, 0.02, 1 )
+shader_param/sparkSpeed = Plane( 0.011, 0.013, 0.017, 0.019 )
+shader_param/ref = 0.4
+shader_param/roughness = 4.0
+shader_param/reflectiveness = 8.0
+shader_param/shine = 1.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 306.0
+height = 224.0
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 448.0
+height = 600.0
+
+[node name="NyanShip" type="RigidBody2D" groups=["ships"]]
+collision_layer = 530
+collision_mask = 7
+mass = 23.89
+physics_material_override = ExtResource( 17 )
+continuous_cd = 1
+linear_damp = 0.0
+angular_damp = 0.0
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+shipName = "SHIP_NYAN"
+shipType = "fission"
+hullPrice = 34999
+processedCargoCapacity = 7000
+lifepod = ExtResource( 2 )
+evaOffset = Vector2( 30, -130 )
+autopilotRotationAssumption = 4.0
+dialogTree = NodePath("UberConversation")
+cargoHoldArea = Rect2( -36, -166, 72, 200 )
+cargoHoldOffset = Vector2( 0, 105 )
+
+[node name="Hull" type="Sprite" parent="."]
+self_modulate = Color( 0.0156863, 0.0156863, 0.0156863, 1 )
+light_mask = 5
+material = SubResource( 7 )
+rotation = -1.5708
+z_index = 19
+texture = SubResource( 9 )
+region_rect = Rect2( 0, 160, 2816, 336 )
+script = ExtResource( 23 )
+
+[node name="AudioSparks" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+pitch_scale = 0.7
+bus = "SFX"
+script = ExtResource( 11 )
+
+[node name="Front Bumper" parent="." instance=ExtResource( 18 )]
+
+[node name="CabinLight" type="Sprite" parent="."]
+material = SubResource( 8 )
+position = Vector2( 0, -120 )
+z_index = 20
+region_rect = Rect2( 16, -48, 224, 128 )
+script = ExtResource( 14 )
+spotlightBrightness = 8.0
+
+[node name="ShipCamera" parent="." instance=ExtResource( 13 )]
+
+[node name="Collider" type="CollisionPolygon2D" parent="."]
+visible = false
+light_mask = 0
+z_index = 50
+polygon = PoolVector2Array( 235, 277, 164, 277, 164, 252, 92, 252, -5, 251, -199, 251, -199, 226, -219, 226, -219, 206, -236, 206, -236, -207, -220, -207, -220, -227, -198, -227, -198, -253, -81, -253, -81, -277, -102, -277, -102, -302, -127, -302, -127, -349, -102, -349, -102, -374, -5, -374, -5, -395, 113, -395, 113, -373, 138, -373, 138, -348, 165, -348, 165, -325, 186, -325, 186, -298, 236, -298, 236, -227, 210, -227, 210, -202, 186, -202, 186, -180, 236, -180, 236, -105, 210, -105, 210, -81, 186, -81, 186, 62, 235, 62, 235, 135, 209, 135, 209, 156, 186, 156, 186, 181, 209, 181, 209, 205, 235, 205 )
+
+[node name="engine-main" parent="." instance=ExtResource( 26 )]
+position = Vector2( 0, 280 )
+command = "m"
+default = "SYSTEM_MAIN_ENGINE_NYAN"
+
+[node name="thruster-lb" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( -220, 227 )
+command = "f"
+default = "SYSTEM_THRUSTER_NYAN"
+
+[node name="thruster-lt" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( -220, -227 )
+rotation = 3.14159
+command = "b"
+default = "SYSTEM_THRUSTER_NYAN"
+
+[node name="thruster-rt" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( 236, -299 )
+rotation = -3.14159
+command = "b"
+default = "SYSTEM_THRUSTER_NYAN"
+
+[node name="thruster-rb" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( 235, 277 )
+command = "f"
+default = "SYSTEM_THRUSTER_NYAN"
+
+[node name="thruster-br" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( 235, 277 )
+rotation = -1.5708
+command = "r<"
+default = "SYSTEM_THRUSTER_NYAN"
+
+[node name="thruster-bl" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( -220, 227 )
+rotation = 1.5708
+command = "l>"
+default = "SYSTEM_THRUSTER_NYAN"
+
+[node name="thruster-tl" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( -220, -227 )
+rotation = 1.5708
+command = "r>"
+default = "SYSTEM_THRUSTER_NYAN"
+
+[node name="thruster-tr" parent="." instance_placeholder="res://ships/modules/ThrusterSlot.tscn"]
+position = Vector2( 236, -299 )
+rotation = -1.5708
+command = "l<"
+default = "SYSTEM_THRUSTER_NYAN"
+
+[node name="Alert" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -5.0
+bus = "SFX"
+script = ExtResource( 11 )
+
+[node name="Collect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+volume_db = -5.0
+bus = "SFX"
+script = ExtResource( 11 )
+
+[node name="AudioImpact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "SFX"
+script = ExtResource( 11 )
+
+[node name="AudioFatigue" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "SFX"
+script = ExtResource( 11 )
+
+[node name="AudioPlume" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX"
+script = ExtResource( 11 )
+
+[node name="Light2D" type="Light2D" parent="."]
+material = SubResource( 3 )
+position = Vector2( -32, -238.33 )
+editor_only = true
+texture = ExtResource( 9 )
+energy = 5.0
+range_height = 50.0
+
+[node name="Light2D2" type="Light2D" parent="."]
+position = Vector2( 348, -46.3298 )
+editor_only = true
+texture = ExtResource( 9 )
+texture_scale = 4.0
+energy = 2.0
+range_height = 50.0
+
+[node name="WeaponSlot" parent="." instance_placeholder="res://weapons/WeaponSlot.tscn"]
+visible = false
+z_index = 22
+toggleCommand = "ship_slot_main_toggle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "appear"
+anims/appear = SubResource( 4 )
+
+[node name="AIdebug" parent="." instance=ExtResource( 22 )]
+visible = false
+
+[node name="AuxSlot" parent="." instance=ExtResource( 4 )]
+
+[node name="SYSTEM_REACTIONWHEEL" parent="." instance=ExtResource( 3 )]
+
+[node name="AI" parent="." instance=ExtResource( 20 )]
+
+[node name="CollisionArea" parent="AI" index="3"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/CollisionArea" index="0"]
+light_mask = 0
+shape = SubResource( 5 )
+
+[node name="DangerArea" parent="AI" index="4"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/DangerArea" index="0"]
+light_mask = 0
+shape = SubResource( 6 )
+
+[node name="CutsceneSpawnInhibitor" parent="AI" index="5"]
+visible = false
+
+[node name="Hud" parent="." instance=ExtResource( 16 )]
+
+[node name="reactor" parent="." instance_placeholder="res://ships/modules/NuclearReactor.tscn"]
+z_index = 20
+texture = null
+hframes = 11
+region_rect = Rect2( 0, 348, 2816, 160 )
+
+[node name="UberConversation" parent="." instance=ExtResource( 19 )]
+
+[editable path="AI"]

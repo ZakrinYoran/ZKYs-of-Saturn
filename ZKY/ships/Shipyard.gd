@@ -14,6 +14,9 @@ func _ready():
 	if Settings.ZKYConfig["sillyStuff"]["addATK225-HH"]:
 		addK225HH()
 
+	if Settings.ZKYConfig["sillyStuff"]["addNyanShip"]:
+		addNyanShip()
+
 
 func addK225H():
 	ships["AT225-H"] = preload("res://ZKY/ships/ATK225-H.tscn")
@@ -70,6 +73,7 @@ func addK225H():
 		}
 	}
 
+
 func addOCP209M():
 	ships["OCP209-M"] = preload("res://ZKY/ships/OCP-209-M.tscn")
 	configAlias["OCP209-M"] = "OCP209"
@@ -115,6 +119,7 @@ func addOCP209M():
 			}, 
 		}
 	}
+
 
 func addK222222225():
 	ships["AT222222225"] = preload("res://ZKY/silly/K222222225/ships/ATK222222225.tscn")
@@ -195,6 +200,7 @@ func addK222222225():
 		}
 	}
 
+
 func addK225HH():
 	ships["AT225-HH"] = preload("res://ZKY/silly/K225-HH/ships/ATK225-HH.tscn")
 	configAlias["AT225-HH"] = "AT225"
@@ -238,6 +244,7 @@ func addK225HH():
 		}
 	}
 
+
 func addStealthTurtle():
 	ships["TRTL-STEALTH"] = preload("res://ZKY/ships/StealthTest.tscn")
 	configAlias["TRTL-STEALTH"] = "TRTL"
@@ -278,5 +285,26 @@ func addStealthTurtle():
 				"main":"SYSTEM_MAIN_ENGINE_K44", 
 				"rcs":"SYSTEM_THRUSTER_MA350HO"
 			}
+		}
+	}
+
+
+func addNyanShip():
+	ships["Nyan"] = preload("res://ZKY/silly/NyanShip/ships/NyanShip.tscn")
+	defaultShipConfig["Nyan"] = {
+		"config":{
+			"reactor":{
+				"power":16.0
+			}, 
+			"fuel":{
+				"capacity":80000.0, 
+				"initial":80000.0, 
+			}, 
+			"capacitor":{
+				"capacity":1500.0, 
+			}, 
+			"turbine":{
+				"power":500.0, 
+			}, 
 		}
 	}

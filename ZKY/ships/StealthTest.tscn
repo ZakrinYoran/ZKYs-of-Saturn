@@ -128,7 +128,6 @@ aiFlipAboveVelocity = 500
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color( 0.01, 0.01, 0.01, 1 )
 polygon = PoolVector2Array( 3, -120, 9, -134, 27, -324, 72, -96, 218, 247, 39, 94.4613, 39, 139, -4, 326, -43, 138, -42.6353, 96.2421, -224, 245, -69, -93, -28, -324, -8, -133, -2.57184, -120.334 )
-script = ExtResource( 21 )
 
 [node name="Hull" type="Sprite" parent="."]
 visible = false
@@ -450,7 +449,6 @@ slot = "right"
 toggleCommand = "ship_slot_right_toggle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("")
 autoplay = "appear"
 anims/appear = SubResource( 8 )
 

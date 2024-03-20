@@ -62,7 +62,7 @@ scroll_horizontal_enabled = false
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer" index="0"]
 margin_top = 16.0
 margin_right = 1367.0
-margin_bottom = 829.0
+margin_bottom = 874.0
 size_flags_horizontal = 3
 custom_constants/separation = 6
 
@@ -430,7 +430,7 @@ valign = 1
 [node name="SettingsSilly" type="GridContainer" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer" index="10"]
 margin_top = 772.0
 margin_right = 1367.0
-margin_bottom = 813.0
+margin_bottom = 858.0
 columns = 2
 
 [node name="AddATK222222225" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsSilly" index="0"]
@@ -457,6 +457,19 @@ script = ExtResource( 3 )
 requiresRestart = true
 type = "sillyStuff"
 setting = "addATK225-HH"
+
+[node name="AddNyanShip" type="CheckButton" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS/MarginContainer/ScrollContainer/VBoxContainer/SettingsSilly" index="2"]
+margin_top = 45.0
+margin_right = 682.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+text = "SETTINGS_ADD_NYAN"
+align = 1
+icon_align = 1
+script = ExtResource( 3 )
+requiresRestart = true
+type = "sillyStuff"
+setting = "addNyanShip"
 
 [node name="Control" type="Control" parent="CenterContainer/TabHintContainer/TabsWithGamepadControl/ZKY_SETTINGS" index="1"]
 anchor_top = 1.0

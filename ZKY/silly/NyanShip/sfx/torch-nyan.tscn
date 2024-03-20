@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sfx/AddOnly.material" type="Material" id=1]
+[ext_resource path="res://ships/modules/nozzle-conventonal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://lights/ConfigurableLight.gd" type="Script" id=3]
+[ext_resource path="res://sfx/thruster.gd" type="Script" id=4]
+[ext_resource path="res://sfx/exhaust.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sfx/thruster_start_01.wav" type="AudioStream" id=7]
+[ext_resource path="res://sfx/thrusters.png" type="Texture" id=8]
+[ext_resource path="res://sfx/thruster_loop_01.wav" type="AudioStream" id=9]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://ZKY/silly/NyanShip/sfx/trail.stex"
+
+[node name="SYSTEM_MAIN_ENGINE_NYAN" type="Sprite"]
+self_modulate = Color( 1, 1, 1, 0.00392157 )
+light_mask = 0
+material = ExtResource( 1 )
+texture = ExtResource( 8 )
+centered = false
+offset = Vector2( -32, -16 )
+hframes = 8
+frame = 1
+script = ExtResource( 4 )
+priorityOffset = 8.0
+repairReplacementPrice = 40000
+repairReplacementTime = 4
+repairFixPrice = 2000
+repairFixTime = 12
+canFizzle = false
+thrust = 50000.0
+command = "m"
+particleChance = 1.0
+fadeSeconds = 0.4
+minPower = 0.8
+damageBentCapacity = 2000.0
+damageBentThreshold = 200.0
+damageChokeCapacity = 6000.0
+damageChokeThreshold = 400.0
+maxMissalignment = 0.0
+specificImpulse = 18
+powerDraw = 100000.0
+gimbalPowerDraw = 1000.0
+gimbal = 0.156
+gimbalPerSecond = 0.314
+pulsePerSecond = 4.0
+pulseEngine = false
+exhaust = ExtResource( 5 )
+systemName = "SYSTEM_MAIN_ENGINE_NYAN"
+mass = 1650
+
+[node name="AudioLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "ShipBowels"
+
+[node name="AudioStart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "SFX"
+
+[node name="Flare" type="Light2D" parent="."]
+position = Vector2( 0, 1584 )
+texture = SubResource( 1 )
+texture_scale = 6.0
+color = Color( 0.231373, 0.686275, 1, 1 )
+energy = 5.0
+range_height = -15.0
+range_z_min = -4096
+range_z_max = 4096
+range_layer_min = -1
+range_layer_max = 1
+range_item_cull_mask = 17
+script = ExtResource( 3 )
+essentiality = 0.8
+
+[node name="nozzle" parent="." instance=ExtResource( 2 )]
+visible = false

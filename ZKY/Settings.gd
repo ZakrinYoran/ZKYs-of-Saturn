@@ -1,7 +1,7 @@
 extends "res://Settings.gd"
 
 # Mod version
-const ZKY_VERSION = "0.4.1"
+const ZKY_VERSION = "0.5.0"
 
 # Default config values
 var ZKYConfig = {
@@ -45,23 +45,13 @@ var ZKYConfig = {
 	"sillyStuff":{
 		"addATK222222225":false,
 		"addATK225-HH":false,
+		"addNyanShip":false,
 	},
 	"input":{
 		"autopilot_flip_heading":[ "R" ],
 		"toggle_mpu":[ "M" ],
 		"action_modifier":[ "Shift" ],
 	}, 
-#	"customMusic":{
-#		"mood_battle":"",
-#		"mood_boss":"",
-#		"mood_mystery":"",
-#		"mood_peaceful":"",
-#		"mood_peaceful_alternate":"",
-#		"mood_rock":"",
-#		"mood_spooky":"",
-#		"mood_western":"",
-#		"mood_western_alternate":"",
-#	},
 }
 
 

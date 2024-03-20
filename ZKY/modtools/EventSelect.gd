@@ -19,7 +19,7 @@ func fillInEvents():
 	var curr = Loader.current
 	if curr.name == "Game":
 		var ring = curr.get_node("TheRing")
-#		events = ring.getEventsPossibleAt(ship.global_position)
+#		events = ring.getEventsPossibleAt(CurrentGame.globalCoords(ship.global_position))
 		events = ring.getAllPossibleEvents()
 		for event in events:
 			add_item(event)
@@ -30,3 +30,7 @@ func _on_EventSpawn_pressed():
 	if curr.name == "Game":
 		var ring = curr.get_node("TheRing")
 		ring.spawnSpecificEvent(text)
+
+
+func _on_Button_pressed():
+	fillInEvents()

@@ -110,6 +110,12 @@ func _ready():
 	if Settings.ZKYConfig["sillyStuff"]["addATK225-HH"]:
 		usedShipsPool.append({"name":"AT225-HH", "age":24 * 3600 * 365 * 200})
 
+	if Settings.ZKYConfig["sillyStuff"]["addNyanShip"]:
+		usedShipsPool.append({"name":"Nyan", "age":24 * 3600 * 365 * 200})
+
+
+
+
 # WIP is weird, deal with this when you have braincells
 # Should in theory add a ship to the pool of 'new' ships at the dealer
 #func getShipsAvailableForSale():

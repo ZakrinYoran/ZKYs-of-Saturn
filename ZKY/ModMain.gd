@@ -18,9 +18,6 @@ func _init(modLoader = ModLoader):
 	if modConfig["modSettings"]["loadDLC"]:
 		loadDLC()
 
-# WIP, does not work
-#	installScriptExtension("Music.gd")
-
 # Scenes that use placeholders must be loaded as soon as possible
 	if modConfig["additions"]["addEquipment"]:
 		replaceScene("weapons/WeaponSlot.tscn")
@@ -28,6 +25,10 @@ func _init(modLoader = ModLoader):
 # Also uses placeholders
 	if modConfig["sillyStuff"]["addATK222222225"]:
 		replaceScene("res://ZKY/silly/K222222225/hud/AT222222225-Hud.tscn", "res://hud/Hud.tscn")
+
+	if modConfig["sillyStuff"]["addNyanShip"]:
+		replaceScene("res://ZKY/silly/NyanShip/ships/modules/TorchSlot.tscn", "res://ships/modules/TorchSlot.tscn")
+		replaceScene("res://ZKY/silly/NyanShip/ships/modules/ThrusterSlot.tscn", "res://ships/modules/ThrusterSlot.tscn")
 
 # Modify the version so it's painfully obvious that the game is modded
 	if modConfig["modSettings"]["updateVersion"]:
@@ -62,6 +63,9 @@ func _init(modLoader = ModLoader):
 # Loads ship .tscn files which binds anything related, not giving us a chance to replace them.
 	installScriptExtension("ships/Shipyard.gd")
 
+# Must be loaded BEFORE Game.tscn
+	updateEvents()
+
 	replaceScene("Game.tscn")
 
 	if modConfig["modSettings"]["loadTL"]:
@@ -75,17 +79,23 @@ func _ready():
 
 	updateUpgrades()
 
+# WIP, will not work with remote processed cargo sources
+	if modConfig["cargoTweaks"]["canKeepProcessed"]:
+		replaceScene("enceladus/DiveSummary.tscn")
+
+	Debug.l("ZKY: Ready")
+
+
+# Things that add or modify events
+func updateEvents():
 	if modConfig["additions"]["addMinerals"] and modConfig["additions"]["addEvents"]:
 		replaceScene("comms/conversation/HabitatConversation.tscn")
 
 	if modConfig["additions"]["addEvents"]:
 		replaceScene("story/TheRing.tscn")
 
-# WIP, will not work with remote processed cargo sources
-	if modConfig["cargoTweaks"]["canKeepProcessed"]:
-		replaceScene("enceladus/DiveSummary.tscn")
-
-	Debug.l("ZKY: Ready")
+	if modConfig["sillyStuff"]["addNyanShip"]:
+		replaceScene("res://ZKY/silly/NyanShip/story/TheRing.tscn", "res://story/TheRing.tscn")
 
 
 # Things that modify enceladus/Upgrades.tscn
