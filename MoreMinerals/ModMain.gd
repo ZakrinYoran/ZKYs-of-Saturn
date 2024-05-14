@@ -15,6 +15,7 @@ func _init(modLoader = ModLoader):
 	modPath = get_script().resource_path.get_base_dir() + "/"
 
 	#Install our script extensions
+	installScriptExtension("ships/ship-ctrl.gd")
 	installScriptExtension("AsteroidSpawner.gd")
 	installScriptExtension("CurrentGame.gd")
 	installScriptExtension("TheRing.gd")
