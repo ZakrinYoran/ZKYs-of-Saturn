@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 10.4048
 
-[node name="Pd3" type="RigidBody2D"]
+[node name="Si3" type="RigidBody2D"]
 mass = 20.0
 script = ExtResource( 1 )
 kineticDamageScale = 0

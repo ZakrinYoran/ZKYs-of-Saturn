@@ -29,18 +29,18 @@ func _init():
 		preload("res://MoreMinerals/asteroids/mineral-si-5.tscn"),
 		preload("res://MoreMinerals/asteroids/mineral-si-6.tscn"),
 		preload("res://MoreMinerals/asteroids/mineral-si-7.tscn"),
-		]
+		],
 })
 
 
 func spawnAsteroidByClass(oc, spot, chaos, spawnPointRandomness = 0.0, initialLinearVelocity = Vector2(0, 0), initialAngularVelocity = 0.0, tries = 1, spawned = true):
 	#Generate the asteroid normally
 	var i = .spawnAsteroidByClass(oc, spot, chaos, spawnPointRandomness, initialLinearVelocity, initialAngularVelocity, tries, spawned)
-
+	
 	#If it's a class 5 roid, it's a mineral chunk
-	if oc == 5 and i.has_method("calc_comp"):
-		#How many sub-minerals are possible
-		var sm : int = randi() % 4
+	if oc == 5 and i:
+		#How many minerals are possible
+		var sm : int = randi() % 3
 		#How much of the mineral should remain its base type
 		var pure : float = i.composition[i.mineral] * i.purity
 		#How much of the mineral should become a different mineral

@@ -9,10 +9,10 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 10.4048
 
-[node name="Pt7" type="RigidBody2D"]
+[node name="Ag7" type="RigidBody2D"]
 mass = 13.0
 script = ExtResource( 1 )
-purity = 90.0
+purity = 0.9
 mineral = "Ag"
 
 [node name="Sprite" type="Sprite" parent="."]

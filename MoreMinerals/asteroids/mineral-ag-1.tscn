@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 10.4048
 
-[node name="Pt1" type="RigidBody2D"]
+[node name="Ag1" type="RigidBody2D"]
 mass = 13.0
 script = ExtResource( 1 )
 purity = 0.4

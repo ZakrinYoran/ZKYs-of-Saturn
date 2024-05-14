@@ -8,6 +8,7 @@ func update_mass():
 #Sum of all components of the roid
 var comp_val = 0.0
 func calc_comp():
+#	print(composition)
 	comp_val = 0.0
 	#For every material in the roid
 	for type in composition:
@@ -19,6 +20,9 @@ func calc_comp():
 		else:
 			#Remove the stray atoms
 			composition.erase(type)
+
+	#Set mineral content to zero so we can abuse the MPU code later
+	mineralContent = 0.0
 
 #Func to let scanners detect all minerals
 func getScan():
