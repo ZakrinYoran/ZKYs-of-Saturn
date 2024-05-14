@@ -16,6 +16,7 @@ func _init(modLoader = ModLoader):
 
 	#Install our script extensions
 	installScriptExtension("ships/ship-ctrl.gd")
+	installScriptExtension("asteroids/mineral.gd")
 	installScriptExtension("AsteroidSpawner.gd")
 	installScriptExtension("CurrentGame.gd")
 	installScriptExtension("TheRing.gd")

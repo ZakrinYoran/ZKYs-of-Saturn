@@ -38,7 +38,7 @@ func spawnAsteroidByClass(oc, spot, chaos, spawnPointRandomness = 0.0, initialLi
 	var i = .spawnAsteroidByClass(oc, spot, chaos, spawnPointRandomness, initialLinearVelocity, initialAngularVelocity, tries, spawned)
 
 	#If it's a class 5 roid, it's a mineral chunk
-	if oc == 5:
+	if oc == 5 and i.has_method("calc_comp"):
 		#How many sub-minerals are possible
 		var sm : int = randi() % 4
 		#How much of the mineral should remain its base type
@@ -77,4 +77,5 @@ func spawnAsteroidByClass(oc, spot, chaos, spawnPointRandomness = 0.0, initialLi
 				#Add it to the roid
 				i.composition[m] = q
 
+		i.update_mass()
 	return i
