@@ -12,7 +12,7 @@ radius = 10.4048
 [node name="Au1" type="RigidBody2D"]
 mass = 16.0
 script = ExtResource( 1 )
-purity = 0.05
+purity = 0.1
 mineral = "Au"
 
 [node name="Sprite" type="Sprite" parent="."]

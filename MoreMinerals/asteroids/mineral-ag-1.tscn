@@ -12,7 +12,7 @@ radius = 10.4048
 [node name="Ag1" type="RigidBody2D"]
 mass = 13.0
 script = ExtResource( 1 )
-purity = 0.4
+purity = 0.1
 mineral = "Ag"
 
 [node name="Sprite" type="Sprite" parent="."]

@@ -13,7 +13,7 @@ func calc_comp():
 	#For every material in the roid
 	for type in composition:
 		#If that material actually exists 
-		if composition[type] > 0:
+		if composition[type] >= 0.001:
 			#Add it to our sum
 			comp_val += composition[type]
 		#If the material does not exist
@@ -34,7 +34,7 @@ func getScan():
 		if scan < composition[type]:
 			#Detect that meterial
 			return type
-		#Otherwise, reduce the scan value and try The next material
+		#Otherwise, reduce the scan value and try the next material
 		scan -= composition[type]
 
 	#If nothing was detected for some reason, default to the filler

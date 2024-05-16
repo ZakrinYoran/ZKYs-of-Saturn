@@ -37,19 +37,26 @@ func spawnAsteroidByClass(oc, spot, chaos, spawnPointRandomness = 0.0, initialLi
 	#Generate the asteroid normally
 	var i = .spawnAsteroidByClass(oc, spot, chaos, spawnPointRandomness, initialLinearVelocity, initialAngularVelocity, tries, spawned)
 	
+	
 	#If it's a class 5 roid, it's a mineral chunk
 	if oc == 5 and i:
+		var pure : float
+		var impure : float
+
 		#How many minerals are possible
 		var sm : int = randi() % 3
-		#How much of the mineral should remain its base type
-		var pure : float = i.composition[i.mineral] * i.purity
-		#How much of the mineral should become a different mineral
-		var impure : float = i.composition[i.mineral] - pure
-		#Set the mineral to its new quantity
-		i.composition[i.mineral] = pure
 
-		#While we have uncalculated sum-minerals
-		while sm > 0:
+		#If there are sub-minerals possible
+		if sm > 0:
+			#How much of the mineral should remain its base type
+			pure = i.composition[i.mineral] * range_lerp(i.purity, 0.0, 1.0, 0.5, 0.9) #maps the purity to between 0.5 and 0.9
+			#How much of the mineral should become a different mineral
+			impure = i.composition[i.mineral] - pure
+			#Set the mineral to its new quantity
+			i.composition[i.mineral] = pure
+
+		#While we have uncalculated sub-minerals AND 1kg of impurity remaining
+		while sm > 0 and impure > 0.001:
 			#Remove 1 sub-mineral from the count
 			sm -= 1
 			#Get mineral vein
@@ -58,7 +65,7 @@ func spawnAsteroidByClass(oc, spot, chaos, spawnPointRandomness = 0.0, initialLi
 			#Quantity of mineral
 			var q : float
 			#While there is more than one sub-mineral remaining
-			if sm > 1:
+			if sm > 0:
 				#Choose how much of the impurity should be the new mineral
 				q = rand_range(0, impure)
 				#Reduce the impurity left by that amount
@@ -67,6 +74,7 @@ func spawnAsteroidByClass(oc, spot, chaos, spawnPointRandomness = 0.0, initialLi
 			else:
 				#The remaining quantity should be this mineral
 				q = impure
+				impure = 0
 
 			#If the roid already has that mineral
 			if i.composition[m]:
@@ -78,4 +86,5 @@ func spawnAsteroidByClass(oc, spot, chaos, spawnPointRandomness = 0.0, initialLi
 				i.composition[m] = q
 
 		i.update_mass()
+		
 	return i
