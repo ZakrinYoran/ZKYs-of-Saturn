@@ -1,6 +1,6 @@
 extends Node
 
-const MOD_PRIORITY = 0
+const MOD_PRIORITY = -10
 
 var _savedObjects = []
 
