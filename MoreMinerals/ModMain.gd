@@ -17,9 +17,13 @@ func _init(modLoader = ModLoader):
 	#Install our script extensions
 	installScriptExtension("asteroids/mineral.gd")
 	installScriptExtension("AsteroidSpawner.gd")
+
+	installScriptExtension("hud/components/MineralLabel.gd")
 	installScriptExtension("hud/SystemMineralList.gd")
+
 	installScriptExtension("ships/modules/MineralProcessingUnit.gd")
 	installScriptExtension("ships/ship-ctrl.gd")
+
 	installScriptExtension("TheRing.gd")
 	installScriptExtension("CurrentGame.gd")
 
