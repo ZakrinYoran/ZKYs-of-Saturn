@@ -1,3 +1,5 @@
+internal|en
+
 -Obonto Trades-
 DIALOG_HABITAT_NEED_SI|Welcome {target/shipname}. Do you have processed silicon for trade?
 DIALOG_HABITAT_NEED_SI_DESPERATE|I'm really glad to see you {target/shipname}, we could really use some processed silicon. We'll pay you premium.
