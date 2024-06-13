@@ -1,5 +1,7 @@
 extends "res://ships/modules/MineralProcessingUnit.gd"
 
+#const IS_MPU = true
+
 # Set so that it shows up in the OMS
 var mineralTargetting = true
 # It's an MPU, we only want minerals
@@ -31,7 +33,7 @@ func setMineralConfig(mineral:String, how:bool):
 				mineralConfig.append(mineral)
 		else :
 			mineralConfig.erase(mineral)
-	print(mineralConfig)
+#	print(mineralConfig)
 
 
 #Checks if the mineral is enabled, used by  the geologist menu to determine what buttons should be pressed
@@ -60,6 +62,7 @@ func _physics_process(delta):
 							var store = 1000 * p.composition[type] * mineralEfficiency
 							#Try to store the mineral in the ship
 							var got = ship.addProcessedCargo(type, store, ship.getProcessedCargoCapacity(type) + internalStorage)
+							print("Processed: %s of %s" % [store, type])
 
 							#Vent excess material.... I think, tbh I just assumed I should keep this code
 							if got > 0:

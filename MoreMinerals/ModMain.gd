@@ -8,6 +8,22 @@ var modName : String = "MoreMinerals"
 var modPath : String
 
 
+const PRIORITY_LIST = [
+	{
+		"priority":0, "func":"initAsteroids"
+	},
+	{
+		"priority":1, "func":"initHUD"
+	},
+	{
+		"priority":2, "func":"initShip"
+	},
+	{
+		"priority":3, "func":"initElse"
+	},
+]
+
+
 #Initialize the mod
 func _init(modLoader = ModLoader):
 	Debug.l(modName + ": Initializing")
@@ -29,10 +45,12 @@ func initAsteroids():
 	installScriptExtension("AsteroidSpawner.gd")
 
 func initHUD():
+	replaceScene("hud/components/MineralSystemLabel.tscn")
 	installScriptExtension("hud/components/MineralLabel.gd")
 	installScriptExtension("hud/SystemMineralList.gd")
 
 func initShip():
+	installScriptExtension("ships/modules/DockingArm.gd")
 	installScriptExtension("ships/modules/MineralProcessingUnit.gd")
 	installScriptExtension("ships/ship-ctrl.gd")
 

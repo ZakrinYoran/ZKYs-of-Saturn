@@ -1,29 +1,34 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://asteroids/mineral.gd" type="Script" id=1]
-[ext_resource path="res://asteroids/mineral.material" type="Material" id=2]
-[ext_resource path="res://asteroids/minerals-c.png" type="Texture" id=3]
-[ext_resource path="res://asteroids/minerals-n.png" type="Texture" id=4]
+[ext_resource path="res://MoreMinerals/asteroids/assets/mineral.material" type="Material" id=2]
 [ext_resource path="res://lights/distant-proxy.png" type="Texture" id=5]
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://MoreMinerals/asteroids/assets/minerals-c.png.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://MoreMinerals/asteroids/assets/minerals-n.png.stex"
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 10.4048
 
-[node name="Si4" type="RigidBody2D"]
-mass = 20.0
+[node name="Mg1" type="RigidBody2D"]
+mass = 12.0
 script = ExtResource( 1 )
-kineticDamageScale = 0
-purity = 0.5
-mineral = "Si"
+purity = 0.7
+mineral = "Mg"
 
 [node name="Sprite" type="Sprite" parent="."]
-self_modulate = Color( 0.784314, 0.784314, 1, 1 )
+self_modulate = Color( 0.901961, 1, 0.956863, 1 )
 material = ExtResource( 2 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 3 )
-normal_map = ExtResource( 4 )
+texture = SubResource( 2 )
+normal_map = SubResource( 3 )
 region_enabled = true
-region_rect = Rect2( 472, 683, 84, 94 )
+region_rect = Rect2( 29, 1130, 83, 77 )
 __meta__ = {
 "_edit_lock_": true
 }

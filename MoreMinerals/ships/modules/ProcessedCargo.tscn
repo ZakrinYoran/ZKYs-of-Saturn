@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://MoreMinerals/ships/modules/ProcessedCargo.gd" type="Script" id=1]
+
+[node name="ProcessedCargo" type="Node"]
+script = ExtResource( 1 )

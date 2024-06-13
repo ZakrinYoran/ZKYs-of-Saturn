@@ -15,20 +15,20 @@ load_path = "res://MoreMinerals/asteroids/assets/minerals-n.png.stex"
 [sub_resource type="CircleShape2D" id=1]
 radius = 10.4048
 
-[node name="Au2" type="RigidBody2D"]
-mass = 12.0
+[node name="Ni7" type="RigidBody2D"]
+mass = 31.0
 script = ExtResource( 1 )
-purity = 0.15
-mineral = "Au"
+purity = 0.74
+mineral = "Ni"
 
 [node name="Sprite" type="Sprite" parent="."]
-self_modulate = Color( 1, 0.964706, 0.627451, 1 )
+self_modulate = Color( 1, 0.901961, 0.588235, 1 )
 material = ExtResource( 2 )
 scale = Vector2( 0.25, 0.25 )
 texture = SubResource( 2 )
 normal_map = SubResource( 3 )
 region_enabled = true
-region_rect = Rect2( 179, 1279, 83, 85 )
+region_rect = Rect2( 906, 1126, 87, 88 )
 __meta__ = {
 "_edit_lock_": true
 }

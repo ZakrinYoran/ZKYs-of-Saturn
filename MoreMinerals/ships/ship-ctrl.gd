@@ -9,9 +9,15 @@ var cargoCapacityModifier = 1.0
 var cargoBehavior = "limited" #[default, reduced, limited, dynamic]
 var maxCargoTypes = 6 #For use with "limited" and "dynamic" cargo behaviors
 
+var cargoScene = preload("res://MoreMinerals/ships/modules/ProcessedCargo.tscn")
+
+
 func _ready():
 	extendedMineralCount = float(CurrentGame.traceMinerals.size())
 	cargoCapacityModifier = (baseMineralCount / extendedMineralCount)
+
+	if playerControlled:
+		add_child(cargoScene.instance())
 
 
 # Get a ship's total processed cargo capacity

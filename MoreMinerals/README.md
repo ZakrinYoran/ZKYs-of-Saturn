@@ -2,15 +2,13 @@
 
 ###### A Mod that adds more mineral variety to your game.
 
-###### Request by: @Tyelan Sin
-
 ## Features:
 
-- 3 new mineral types:
-  
-  - Gold `Au`, worth 5.8 E$/kg
-  - Silver `Ag`, worth 8.6 E$/kg
-  - Silicon `Si`, worth 2.6 E$/kg
+- 6 new mineral types!
+
+- 4 new Obonto Trades!
+
+- 
 
 - Multiple minerals per chunk!
   

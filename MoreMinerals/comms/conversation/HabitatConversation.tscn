@@ -5,19 +5,64 @@
 
 [node name="HabitatConversation" instance=ExtResource( 1 )]
 
-[node name="DIALOG_HABITAT_NEED_SI" parent="." index="18" instance=ExtResource( 2 )]
+[node name="DIALOG_HABITAT_NEED_MG" parent="." index="18" instance=ExtResource( 2 )]
 mostPrelevantDisposition = "curiosity"
-tradeInMineral = "Si"
+tradeInMineral = "Mg"
 
-[node name="DIALOG_HABITAT_NEED_SI|like" parent="." index="19" instance=ExtResource( 2 )]
+[node name="DIALOG_HABITAT_NEED_MG|like" parent="." index="19" instance=ExtResource( 2 )]
 mostPrelevantDisposition = "support"
-tradeInMineral = "Si"
+tradeInMineral = "Mg"
 
-[node name="DIALOG_HABITAT_NEED_SI_DESPERATE" parent="." index="20" instance=ExtResource( 2 )]
+[node name="DIALOG_HABITAT_NEED_TI" parent="." index="20" instance=ExtResource( 2 )]
+mostPrelevantDisposition = "curiosity"
+tradeInMineral = "Ti"
+
+[node name="DIALOG_HABITAT_NEED_TI|like" parent="." index="21" instance=ExtResource( 2 )]
+mostPrelevantDisposition = "support"
+tradeInMineral = "Ti"
+
+[node name="DIALOG_HABITAT_NEED_NI" parent="." index="22" instance=ExtResource( 2 )]
+mostPrelevantDisposition = "curiosity"
+tradeInMineral = "Ni"
+
+[node name="DIALOG_HABITAT_NEED_NI|like" parent="." index="23" instance=ExtResource( 2 )]
+mostPrelevantDisposition = "support"
+tradeInMineral = "Ni"
+
+[node name="DIALOG_HABITAT_NEED_CU" parent="." index="24" instance=ExtResource( 2 )]
+mostPrelevantDisposition = "curiosity"
+tradeInMineral = "Cu"
+
+[node name="DIALOG_HABITAT_NEED_CU|like" parent="." index="25" instance=ExtResource( 2 )]
+mostPrelevantDisposition = "support"
+tradeInMineral = "Cu"
+
+[node name="DIALOG_HABITAT_NEED_MG_DESPERATE" parent="." index="26" instance=ExtResource( 2 )]
 mostPrelevantDisposition = "curiosity"
 changeHostility = -0.5
 changeFear = -0.5
-tradeInMineral = "Si"
+tradeInMineral = "Mg"
+setDiscountTo = 5.0
+
+[node name="DIALOG_HABITAT_NEED_TI_DESPERATE" parent="." index="27" instance=ExtResource( 2 )]
+mostPrelevantDisposition = "curiosity"
+changeHostility = -0.5
+changeFear = -0.5
+tradeInMineral = "Ti"
+setDiscountTo = 5.0
+
+[node name="DIALOG_HABITAT_NEED_NI_DESPERATE" parent="." index="28" instance=ExtResource( 2 )]
+mostPrelevantDisposition = "curiosity"
+changeHostility = -0.5
+changeFear = -0.5
+tradeInMineral = "Ni"
+setDiscountTo = 5.0
+
+[node name="DIALOG_HABITAT_NEED_CU_DESPERATE" parent="." index="29" instance=ExtResource( 2 )]
+mostPrelevantDisposition = "curiosity"
+changeHostility = -0.5
+changeFear = -0.5
+tradeInMineral = "Cu"
 setDiscountTo = 5.0
 
 [editable path="DIALOG_HABITAT_DOCKING_SECURE"]
