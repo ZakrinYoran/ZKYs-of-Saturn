@@ -11,17 +11,14 @@ var mineralTargetting = true
 var onlyMinerals = true
 # The filter that will determine what minerals we store
 var mineralConfig = []
-# I kow it's stupid to have two seperate arrays tracking the same thing, but I think it's more performant this way?
-var dumpFilter = []
-
+# How quickly the ship can purge minerals
 var dumpRate = 500.0
 
 # The ship we belong to
 var ship
-# The mpu on the ship
-var mpu
 # Any equiment that can hold minerals
 var containers = []
+
 
 # Needed for the ship to detect it as a system
 func getStatus():
@@ -46,18 +43,12 @@ func _ready():
 	if mineralTargetting:
 		#Get the filter from the ship
 		mineralConfig = ship.getConfig("cargo.pfilter", [])
-		#If the filter is empty
-		if mineralConfig.empty():
-			#Set the filter to all minerals
-			mineralConfig = CurrentGame.traceMinerals.duplicate()
-			#Set the ship config
-			ship.setConfig("cargo.pfilter", mineralConfig)
 
 
 #Enables/Disables given mineral, called whenever geologist filters are changed
 func setMineralConfig(mineral:String, how:bool):
 	if mineralTargetting:
-		if how:
+		if !how:
 			if not mineralConfig.has(mineral):
 				mineralConfig.append(mineral)
 		else :
@@ -69,24 +60,28 @@ func setMineralConfig(mineral:String, how:bool):
 #Checks if the mineral is enabled, used by  the geologist menu to determine what buttons should be pressed
 func hasMineralEnabled(mineral)->bool:
 	if mineralTargetting:
-		return mineralConfig.has(mineral)
+		return !mineralConfig.has(mineral)
 	else :
 		return false
 
 
 func _physics_process(delta):
 #	Check what minerals we need to handle this tick
-	for m in dumpFilter:
+	for m in mineralConfig:
 
 #	Check if any containers have empty space
 		var dump = true
 		for c in containers:
-			if c.enabled and c.locked and c.mineralConfig.minerals.has(m):
-				if Tool.claim(c.target) and c.target.getProcessedCargo(m) < c.target.getProcessedCargoCapacity(m):
-					dump = false
-					Tool.release(c.target)
-					break
-				Tool.release(c.target)
+			if Tool.claim(c):
+				if c.enabled and c.locked and c.mineralConfig.minerals.has(m):
+					if Tool.claim(c.target):
+						if c.target.getProcessedCargo(m) < c.target.getProcessedCargoCapacity(m):
+							dump = false
+							Tool.release(c.target)
+							Tool.release(c)
+							break
+						Tool.release(c.target)
+				Tool.release(c)
 
 #	If there is no empty space, dump the mineral
 		if dump:
@@ -112,9 +107,6 @@ func getSystems(systems):
 	for id in systems:
 		var s = systems[id].ref
 
-#		if "IS_MPU" in s:
-#			mpu = s
-
 		if "system" in s:
 			if "IS_ARM" in s.system:
 				containers.append(s.system)
@@ -123,15 +115,10 @@ func getSystems(systems):
 
 
 func setFilters():
-	var f = []
-	for m in CurrentGame.traceMinerals:
-		if !mineralConfig.has(m):
-			f.append(m)
-
-	dumpFilter = f
-
 	for c in containers:
-		c.dumpFilter = f
+		if Tool.claim(c):
+			c.dumpFilter = mineralConfig
+			Tool.release(c)
 
 
 # Shows what minerals are in the ship on the OMS
