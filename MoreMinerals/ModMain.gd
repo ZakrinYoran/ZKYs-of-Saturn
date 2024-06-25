@@ -1,11 +1,9 @@
 extends Node
 
 const MOD_PRIORITY = -10
-
+const MOD_NAME : String = "MoreMinerals"
+var modPath : String = get_script().resource_path.get_base_dir() + "/"
 var _savedObjects = []
-
-var modName : String = "MoreMinerals"
-var modPath : String
 
 
 const PRIORITY_LIST = [
@@ -26,10 +24,7 @@ const PRIORITY_LIST = [
 
 #Initialize the mod
 func _init(modLoader = ModLoader):
-	Debug.l(modName + ": Initializing")
-
-#	Get current path of script
-	modPath = get_script().resource_path.get_base_dir() + "/"
+	l("Initializing")
 
 #	Install our script extensions
 	initAsteroids()
@@ -37,7 +32,7 @@ func _init(modLoader = ModLoader):
 	initShip()
 	initElse()
 
-	Debug.l(modName + ": Initialized")
+	l("Initialized")
 
 
 func initAsteroids():
@@ -66,19 +61,19 @@ func _ready():
 #	Add our translations
 	updateTL(modPath + "i18n/translation.txt", "|")
 
-	Debug.l(modName + ": Ready")
+	l("Ready")
 
 
 # Helper script to load translations
 func updateTL(csvPath:String, delim:String = ","):
-	Debug.l("%s: Adding translations from: %s" % [modName, csvPath])
+	l("Adding translations from: %s" % csvPath)
 	var tlFile = File.new()
 	tlFile.open(csvPath, File.READ)
 
 	var translations = []
 
 	var csvLine = tlFile.get_line().split(delim)
-	Debug.l("Adding translations as: %s" % csvLine)
+	l("Adding translations as: %s" % csvLine)
 	for i in range(1, csvLine.size()):
 		var translationObject = Translation.new()
 		translationObject.locale = csvLine[i]
@@ -91,14 +86,14 @@ func updateTL(csvPath:String, delim:String = ","):
 			var translationID = csvLine[0]
 			for i in range(1, csvLine.size()):
 				translations[i - 1].add_message(translationID, csvLine[i].c_unescape())
-			Debug.l("Added translation: %s" % csvLine)
+			l("Added translation: %s" % csvLine)
 
 	tlFile.close()
 
 	for translationObject in translations:
 		TranslationServer.add_translation(translationObject)
 
-	Debug.l("%s: Translations Updated" % modName)
+	l("Translations Updated")
 
 
 # Helper function to extend scripts
@@ -111,18 +106,18 @@ func installScriptExtension(path:String):
 	var parentScript = childScript.get_base_script()
 	var parentPath = parentScript.resource_path
 
-	Debug.l("Installing script extension: %s <- %s" % [parentPath, childPath])
+	l("Installing script extension: %s <- %s" % [parentPath, childPath])
 
 	childScript.take_over_path(parentPath)
 
 
 # Helper function to replace scenes
-func replaceScene(path:String, oldPath:String = "none"):
-	Debug.l("Updating scene: %s" % path)
+func replaceScene(path:String, oldPath:String = ""):
+	l("Updating scene: %s" % path)
 	var newScene
 	var oldScene
 
-	if oldPath == "none":
+	if oldPath == "":
 		newScene = str(modPath + path)
 		oldScene = str("res://" + path)
 
@@ -133,4 +128,9 @@ func replaceScene(path:String, oldPath:String = "none"):
 	var scene = load(newScene)
 	scene.take_over_path(oldScene)
 	_savedObjects.append(scene)
-	Debug.l("Finished updating: %s" % oldScene)
+	l("Finished updating: %s" % oldScene)
+
+
+# Func to print messages to the logs
+func l(msg:String, title:String = MOD_NAME):
+	Debug.l("[%s]: %s" % [title, msg])

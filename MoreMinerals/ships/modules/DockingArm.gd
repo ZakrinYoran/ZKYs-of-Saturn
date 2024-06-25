@@ -20,10 +20,10 @@ func _physics_process(delta):
 #	Calculate how much we can transfer this physics tick
 	var oreTransfer = delta * modProcessedCargoTransferSpeed
 
-#	If the ship is the player ship, and we can transfer ore:
-	if oreTransfer > 0 and Tool.claim(ship) and ship.isPlayerControlled():
 #	If the arm is enabled, and locked onto a container
-		if enabled and locked and Tool.claim(target):
+	if delta > 0 and enabled and locked and Tool.claim(target):
+#	If we can transfer ore:
+		if oreTransfer > 0 and Tool.claim(ship):
 #		Calculate energy requirement
 			var er = oreTransfer * processedCargoPowerPerKg
 #		Attempt to consume power from the ship
@@ -106,8 +106,8 @@ func _physics_process(delta):
 #	NOTE: we're relying on the base script to stop playing the sound
 
 #	Release the container and ship
-			Tool.release(target)
-		Tool.release(ship)
+			Tool.release(ship)
+		Tool.release(target)
 
 
 #	Modified to show minerals in OMS despite processedCargoTransferSpeed being 0 
