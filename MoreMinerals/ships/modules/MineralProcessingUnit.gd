@@ -62,7 +62,6 @@ func _physics_process(delta):
 							var store = 1000 * p.composition[type] * mineralEfficiency
 							#Try to store the mineral in the ship
 							var got = ship.addProcessedCargo(type, store, ship.getProcessedCargoCapacity(type) + internalStorage)
-							print("Processed: %s of %s" % [store, type])
 
 							#Vent excess material.... I think, tbh I just assumed I should keep this code
 							if got > 0:

@@ -73,7 +73,7 @@ func _physics_process(delta):
 		var dump = true
 		for c in containers:
 			if Tool.claim(c):
-				if c.enabled and c.locked and c.mineralConfig.minerals.has(m):
+				if c.enabled and c.locked and c.mineralTargetting and c.mineralConfig.minerals.has(m):
 					if Tool.claim(c.target):
 						if c.target.getProcessedCargo(m) < c.target.getProcessedCargoCapacity(m):
 							dump = false
