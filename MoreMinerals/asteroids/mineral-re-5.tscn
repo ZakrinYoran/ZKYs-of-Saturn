@@ -19,7 +19,7 @@ radius = 10.4048
 mass = 25.0
 script = ExtResource( 1 )
 kineticDamageScale = 0
-purity = 0.14
+purity = 0.22
 mineral = "Re"
 
 [node name="Sprite" type="Sprite" parent="."]

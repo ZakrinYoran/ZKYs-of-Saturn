@@ -15,11 +15,11 @@ load_path = "res://MoreMinerals/asteroids/assets/minerals-n.png.stex"
 [sub_resource type="CircleShape2D" id=1]
 radius = 10.4048
 
-[node name="Pd2" type="RigidBody2D"]
+[node name="Re2" type="RigidBody2D"]
 mass = 25.0
 script = ExtResource( 1 )
 kineticDamageScale = 0
-purity = 0.05
+purity = 0.1
 mineral = "Re"
 
 [node name="Sprite" type="Sprite" parent="."]
